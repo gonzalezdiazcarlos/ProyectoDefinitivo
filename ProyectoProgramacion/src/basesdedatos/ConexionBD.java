@@ -9,7 +9,7 @@ public class ConexionBD {
 	
 	public static Connection conectar () {
 		Connection conn = null;
-		String url = "jdbc:sqlite:baseproyecto.db";
+		String url = "jdbc:sqlite:BDproyecto.db";
 		try {
 			Class.forName("org.sqlite.JDBC");
 			conn = DriverManager.getConnection(url);

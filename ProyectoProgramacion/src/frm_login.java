@@ -3,7 +3,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import basesdedatos.Metodos_sql;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -13,8 +17,8 @@ import java.awt.event.ActionEvent;
 public class frm_login extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtUsuario;
 	private JPasswordField txtContraseña;
+	private JTextField txtCorreo;
 
 	/**
 	 * Launch the application.
@@ -36,6 +40,9 @@ public class frm_login extends JFrame {
 	 * Create the frame.
 	 */
 	public frm_login() {
+		
+		Metodos_sql metodos = new Metodos_sql();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 731, 517);
 		contentPane = new JPanel();
@@ -48,25 +55,27 @@ public class frm_login extends JFrame {
 		lblNewLabel.setBounds(329, 47, 93, 31);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lbl = new JLabel("USUARIO:");
-		lbl.setBounds(101, 133, 80, 31);
-		contentPane.add(lbl);
-		
 		JLabel lblNewLabel_2 = new JLabel("CONTRASEÑA:");
-		lblNewLabel_2.setBounds(101, 217, 80, 31);
+		lblNewLabel_2.setBounds(101, 210, 80, 31);
 		contentPane.add(lblNewLabel_2);
 		
-		txtUsuario = new JTextField();
-		txtUsuario.setBounds(268, 138, 193, 20);
-		contentPane.add(txtUsuario);
-		txtUsuario.setColumns(10);
-		
 		txtContraseña = new JPasswordField();
-		txtContraseña.setBounds(268, 222, 193, 20);
+		txtContraseña.setBounds(268, 215, 193, 20);
 		contentPane.add(txtContraseña);
 		
 		JButton btnEntrar = new JButton("ENTRAR");
-		btnEntrar.setBounds(275, 292, 89, 23);
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String busqueda_usuario = metodos.buscarUsuarioRegistrado(txtCorreo.getText(),txtContraseña.getText());
+				
+				if(busqueda_usuario.equals("usuario encontrado")) {
+					String busqueda_nombre = metodos.buscarNombre(txtCorreo.getText());
+					JOptionPane.showMessageDialog(null, "Bienvenido" + busqueda_nombre);
+					//ir a la siguiente ventana
+				}
+			} 
+		});
+		btnEntrar.setBounds(268, 300, 89, 23);
 		contentPane.add(btnEntrar);
 		
 		JButton btnRegresar = new JButton("REGRESAR");
@@ -78,7 +87,16 @@ public class frm_login extends JFrame {
 
 			}
 		});
-		btnRegresar.setBounds(380, 292, 89, 23);
+		btnRegresar.setBounds(372, 300, 89, 23);
 		contentPane.add(btnRegresar);
+		
+		JLabel lblNewLabel_1 = new JLabel("CORREO:");
+		lblNewLabel_1.setBounds(101, 144, 67, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		txtCorreo = new JTextField();
+		txtCorreo.setBounds(268, 141, 193, 20);
+		contentPane.add(txtCorreo);
+		txtCorreo.setColumns(10);
 	}
 }

@@ -57,7 +57,7 @@ public class frm_menu extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(276, 93, 139, 34);
+		btnNewButton.setBounds(276, 93, 147, 34);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("CREAR USUARIO");
@@ -68,7 +68,18 @@ public class frm_menu extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_1.setBounds(276, 170, 139, 34);
+		btnNewButton_1.setBounds(276, 170, 147, 34);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Soy admin");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frm_loginadmin ventana = new frm_loginadmin();
+				ventana.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton_2.setBounds(276, 242, 147, 34);
+		contentPane.add(btnNewButton_2);
 	}
 }

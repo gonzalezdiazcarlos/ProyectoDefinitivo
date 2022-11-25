@@ -18,7 +18,7 @@ public class frm_altausuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNombre;
-	private JTextField txtCodigo;
+	private JTextField txtCorreo;
 	private JPasswordField txtContraseña;
 
 	/**
@@ -56,7 +56,7 @@ public class frm_altausuario extends JFrame {
 		lblNewLabel.setBounds(63, 97, 78, 33);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("CODIGO:");
+		JLabel lblNewLabel_1 = new JLabel("CORREO:");
 		lblNewLabel_1.setBounds(63, 168, 49, 14);
 		contentPane.add(lblNewLabel_1);
 		
@@ -73,10 +73,10 @@ public class frm_altausuario extends JFrame {
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 		
-		txtCodigo = new JTextField();
-		txtCodigo.setBounds(151, 165, 96, 20);
-		contentPane.add(txtCodigo);
-		txtCodigo.setColumns(10);
+		txtCorreo = new JTextField();
+		txtCorreo.setBounds(151, 165, 96, 20);
+		contentPane.add(txtCorreo);
+		txtCorreo.setColumns(10);
 		
 		txtContraseña = new JPasswordField();
 		txtContraseña.setBounds(151, 228, 96, 20);
@@ -85,7 +85,8 @@ public class frm_altausuario extends JFrame {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int i = metodos.guardar(txtNombre.getText(),txtCodigo.getText(),txtContraseña.getText());
+				
+				int i = metodos.guardar(txtNombre.getText(),txtCorreo.getText(),txtContraseña.getText());
 				
 				if( i > 0 ) {
 					JOptionPane.showMessageDialog(null, "Datos guardados correctamente");
