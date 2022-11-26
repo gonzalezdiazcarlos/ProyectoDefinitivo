@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import basesdedatos.Metodos_sql;
+import basesdedatos.MetodosUsuario_sql;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class frm_altausuario extends JFrame {
+public class frm_crearusuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNombre;
@@ -28,7 +28,7 @@ public class frm_altausuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_altausuario frame = new frm_altausuario();
+					frm_crearusuario frame = new frm_crearusuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,9 +40,9 @@ public class frm_altausuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_altausuario() {
+	public frm_crearusuario() {
 		
-		Metodos_sql metodos = new Metodos_sql();
+		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 725, 471);

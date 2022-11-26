@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import calzado.Calzado;
+import clases.Calzado;
 
 public class UtilA {  // Metodos normales a usar en el proyecto
 

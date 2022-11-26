@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class Metodos_sql {
+public class MetodosUsuario_sql {
 	
 	public static ConexionBD conexion = new ConexionBD ();
 	
@@ -34,6 +34,33 @@ public class Metodos_sql {
 			
 		} catch (Exception e) {
 			
+			System.out.println(e);
+		}
+		return resultado;
+	
+	}
+		
+	public int guardarAdmin (String Codigo, String nombre, String contraseña) {
+		
+		int resultado = 0;
+		Connection conexion = null;
+		
+		String sentencia_guardar = "INSERT INTO admin (CODIGO,NOMBRE,CONTRASEÑA) VALUES ("+"'"+Codigo+"',"+"'"+nombre+"',"+"'"+contraseña+"'"+")";
+		
+		try {
+			conexion = ConexionBD.conectar();
+			sentencia_preparada = conexion.prepareStatement(sentencia_guardar);
+			sentencia_preparada.setString(1, Codigo);
+			sentencia_preparada.setString(2, nombre);
+			sentencia_preparada.setString(3, contraseña);
+			
+			resultado = sentencia_preparada.executeUpdate();
+			sentencia_preparada.close();
+			
+			conexion.close();
+			
+		} catch (Exception e) {
+
 			System.out.println(e);
 		}
 		return resultado;
@@ -135,6 +162,7 @@ public class Metodos_sql {
 		
 		return busqueda_usuario;
 	}
+	
 	
 	
 	

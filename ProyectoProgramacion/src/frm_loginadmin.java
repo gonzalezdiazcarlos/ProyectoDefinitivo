@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import basesdedatos.Metodos_sql;
+import basesdedatos.MetodosUsuario_sql;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -41,7 +41,7 @@ public class frm_loginadmin extends JFrame {
 	 */
 	public frm_loginadmin() {
 		
-		Metodos_sql metodos = new Metodos_sql();
+		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 806, 483);
@@ -80,7 +80,9 @@ public class frm_loginadmin extends JFrame {
 				if(busqueda_usuario.equals("usuario encontrado")) {
 					String busqueda_nombre = metodos.buscarNombre(txtCODIGO.getText());
 					JOptionPane.showMessageDialog(null, "Bienvenido" + busqueda_nombre);
-					//ir a la siguiente ventana
+					frm_admin ventana = new frm_admin();
+					ventana.setVisible(true);
+					dispose();
 				}
 			}
 		});

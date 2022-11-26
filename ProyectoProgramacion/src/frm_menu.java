@@ -51,7 +51,7 @@ public class frm_menu extends JFrame {
 		JButton btnNewButton = new JButton("LOGIN");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_login ventana = new frm_login ();
+				frm_loginusuario ventana = new frm_loginusuario ();
 				ventana.setVisible(true);
 				dispose();
 				
@@ -63,7 +63,7 @@ public class frm_menu extends JFrame {
 		JButton btnNewButton_1 = new JButton("CREAR USUARIO");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_altausuario ventana = new frm_altausuario();
+				frm_crearusuario ventana = new frm_crearusuario();
 				ventana.setVisible(true); 
 				dispose();
 			}

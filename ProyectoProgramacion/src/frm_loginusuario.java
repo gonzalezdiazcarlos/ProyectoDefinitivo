@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import basesdedatos.Metodos_sql;
+import basesdedatos.MetodosUsuario_sql;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class frm_login extends JFrame {
+public class frm_loginusuario extends JFrame {
 
 	private JPanel contentPane;
 	private JPasswordField txtContraseña;
@@ -27,7 +27,7 @@ public class frm_login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_login frame = new frm_login();
+					frm_loginusuario frame = new frm_loginusuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,9 +39,9 @@ public class frm_login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_login() {
+	public frm_loginusuario() {
 		
-		Metodos_sql metodos = new Metodos_sql();
+		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 731, 517);
@@ -71,7 +71,9 @@ public class frm_login extends JFrame {
 				if(busqueda_usuario.equals("usuario encontrado")) {
 					String busqueda_nombre = metodos.buscarNombre(txtCorreo.getText());
 					JOptionPane.showMessageDialog(null, "Bienvenido" + busqueda_nombre);
-					//ir a la siguiente ventana
+					frm_usuariomain ventana = new frm_usuariomain();
+					ventana.setVisible(true);
+					dispose();
 				}
 			} 
 		});
