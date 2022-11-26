@@ -1,0 +1,11 @@
+INSERT INTO calzado(Codigo, Nombre, Tipo, Cantidad, Precio, Color, Talla, Genero)
+VALUES
+	(123456, 'StanSmith' ,'Deportiva',10, 90, 'Blanco', 37,'Mujer');
+	(123457, 'NewBalance' ,'Deportiva', 6 ,120, 'Azul', 36,'Mujer');
+	(123458, 'Converse', 'Deportiva', 10,100, 'Gris' ,39,'Mujer');
+	(123451, 'Nauticos', 'Zapato', 15, 70, 'Marron', 43, 'Hombre');
+	(123452, 'SBNike', 'Deportiva', 12, 65, 'Negro',42,'Hombre');
+	(123453, 'Vulcan Pompeii', 'Zapatos', 10, 75, 'Azul', 44,'Hombre');
+	
+SELECT * FROM calzado;
+
