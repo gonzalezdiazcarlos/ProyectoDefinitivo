@@ -218,51 +218,7 @@ public void suggestZapa(String[] listaVentas, int index) {
 
 public void filterProduct(String filter, Calzado[]listaCalzados, String gender, String stamp,String colour,String type,int size,float price) {
 	switch(filter) {
-	case "Eco":
-		for(int zapas=0;zapas<listaCalzados.length;zapas++) {
-			if(listaCalzados[zapas].getEco()== true) {
-				System.out.println(listaCalzados[zapas]);}
-		}break;
-		
-	case "Genero":
-		for(int zapas=0;zapas<listaCalzados.length;zapas++) {
-			if(listaCalzados[zapas].getGenero().equals(gender)) {
-				System.out.println(listaCalzados[zapas]);}
-		}break;
-		
-	case "Estampado":
-		for(int zapas=0;zapas<listaCalzados.length;zapas++) {
-			if(listaCalzados[zapas].getEstampado().equals(stamp)) {
-				System.out.println(listaCalzados[zapas]);}
-		}break;	
-		
-	case "Color":
-		for(int zapas=0;zapas<listaCalzados.length;zapas++) {
-			if(listaCalzados[zapas].getColor().equals(colour)) {
-				System.out.println(listaCalzados[zapas]);}
-		}break;
-		
-	case "Tipo":
-		for(int zapas=0;zapas<listaCalzados.length;zapas++) {
-			if(listaCalzados[zapas].getTipo().equals(type)) {
-				System.out.println(listaCalzados[zapas]);}
-		}break;
-		
-	case "Precio":
-		for(int zapas=0;zapas<listaCalzados.length;zapas++) {
-			if((listaCalzados[zapas].getPrecio() < 20) && (price<20)) {
-				System.out.println(listaCalzados[zapas]);
-		    }else if((listaCalzados[zapas].getPrecio() < 40 && listaCalzados[zapas].getPrecio()>=20) && (price<40 && price>=20 )) {
-		    	System.out.println(listaCalzados[zapas]);
-			}else if((listaCalzados[zapas].getPrecio() <= 40) && (price<=40)) {   System.out.println(listaCalzados[zapas]);             }
-		}break;
-		
-	case "Talla":
-		for(int zapas=0;zapas<listaCalzados.length;zapas++) {
-			if(listaCalzados[zapas].getTalla()== size ) {
-				System.out.println(listaCalzados[zapas]);  }
-		}break;
-	default:break;
+	
 	}
 
 
