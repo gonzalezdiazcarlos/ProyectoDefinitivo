@@ -10,10 +10,10 @@ public class Calzado {
 	private String Color;
 	public int Talla;
 	public String Genero;
-	
+	public boolean Eco;
 	
 	public Calzado(int codigo, String nombre, String tipo, int cantidad, int precio, String color, int talla,
-			String genero) {
+			String genero, boolean eco) {
 		super();
 		Codigo = codigo;
 		Nombre = nombre;
@@ -23,6 +23,7 @@ public class Calzado {
 		Color = color;
 		Talla = talla;
 		Genero = genero;
+		Eco = eco;
 	}
 
 
@@ -105,8 +106,12 @@ public class Calzado {
 		Genero = genero;
 	}
 	
-	
-	
+	public void serEco(boolean eco) {
+		Eco=eco;
+	}
+	public boolean getEco() {
+		return Eco;
+	}
 	
 	
 	

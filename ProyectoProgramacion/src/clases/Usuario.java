@@ -12,13 +12,16 @@ public class Usuario {
   private String Nombre;
   private String Correo;
   private String Contraseña;
+  private String Dni;
+  private int Tlfn;
   
-  
-public Usuario(String nombre, String correo, String contraseña) {
+public Usuario(String nombre, String correo, String contraseña, String dni, int tlfn) {
 	super();
 	Nombre = nombre;
 	Correo = correo;
 	Contraseña = contraseña;
+	Tlfn=tlfn;
+	Dni=dni;
 }
 
 
@@ -51,9 +54,19 @@ public void setContraseña(String contraseña) {
 	Contraseña = contraseña;
 }
   
-  
+  public void setTlfn(int tlfn) {
+	  Tlfn=tlfn;
+  }
  
-      
+  public void setDni(String dni) {
+      Dni=dni;
+  }
+public String getDni() {
+	return Dni;
+}
+public int getTlfn() {
+	return Tlfn;
+}
 	  
 
 
