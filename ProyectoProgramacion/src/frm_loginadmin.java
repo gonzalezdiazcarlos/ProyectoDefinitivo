@@ -75,10 +75,10 @@ public class frm_loginadmin extends JFrame {
 		JButton btnNewButton = new JButton("ENTRAR");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String busqueda_usuario = metodos.buscarUsuarioRegistrado(txtCODIGO.getText(),txtCONTRASEÑA.getText());
+				String busqueda_usuario = metodos.buscarAdminRegistrado(txtCODIGO.getText(),txtCONTRASEÑA.getText());
 				
 				if(busqueda_usuario.equals("usuario encontrado")) {
-					String busqueda_nombre = metodos.buscarNombre(txtCODIGO.getText());
+					String busqueda_nombre = metodos.buscarNombreAdmin(txtCODIGO.getText());
 					JOptionPane.showMessageDialog(null, "Bienvenido" + busqueda_nombre);
 					frm_admin ventana = new frm_admin();
 					ventana.setVisible(true);

@@ -70,7 +70,7 @@ public class frm_loginusuario extends JFrame {
 				
 				if(busqueda_usuario.equals("usuario encontrado")) {
 					String busqueda_nombre = metodos.buscarNombre(txtCorreo.getText());
-					JOptionPane.showMessageDialog(null, "Bienvenido" + busqueda_nombre);
+					JOptionPane.showMessageDialog(null, "Bienvenido" + "" + busqueda_nombre);
 					frm_usuariomain ventana = new frm_usuariomain();
 					ventana.setVisible(true);
 					dispose();

@@ -18,7 +18,7 @@ public class MetodosUsuario_sql {
 		int resultado = 0;
 		Connection conexion = null;
 		
-		String sentencia_guardar = "INSERT INTO usuario (NOMBRE,CORREO,CONTRASEÑA) VALUES ("+"'"+nombre+"',"+"'"+Correo +"',"+"'"+contraseña+"'"+")";
+		String sentencia_guardar = "INSERT INTO usuario (NOMBRE,CORREO,CONTRASEÑA) VALUES (?,?,?)";
 		
 		try {
 			conexion = ConexionBD.conectar();
@@ -45,7 +45,7 @@ public class MetodosUsuario_sql {
 		int resultado = 0;
 		Connection conexion = null;
 		
-		String sentencia_guardar = "INSERT INTO admin (CODIGO,NOMBRE,CONTRASEÑA) VALUES ("+"'"+Codigo+"',"+"'"+nombre+"',"+"'"+contraseña+"'"+")";
+		String sentencia_guardar = "INSERT INTO administrador (CODIGO,NOMBRE,CONTRASEÑA) VALUES (?,?,?)";
 		
 		try {
 			conexion = ConexionBD.conectar();
@@ -71,13 +71,14 @@ public class MetodosUsuario_sql {
 		 Connection conexion = null;
 		 try {
 			 conexion  = ConexionBD.conectar();
-			 String sentencia_buscar = ("SELECT NOMBRE, CONTRASEÑA FROM USUARIO WHERE CORREO = '" + Correo + "'");
-			 sentencia_preparada = conexion.prepareStatement(sentencia_buscar); 
+			 String sentencia_buscar = ("SELECT NOMBRE, CONTRASEÑA FROM USUARIO WHERE CORREO = ?");
+			 sentencia_preparada = conexion.prepareStatement(sentencia_buscar);
+			 sentencia_preparada.setString(1,Correo);
 			 resultado = sentencia_preparada.executeQuery();
 			 if(resultado.next()) {
 				 String nombre = resultado.getString("NOMBRE");
-				 String contraseña = resultado.getString("CONTRASEÑA");
-				 busqueda_nombre = (nombre + " "+ contraseña);
+				 
+				 busqueda_nombre = (nombre);
 			 }
 			 
 			 conexion.close(); 
@@ -98,8 +99,10 @@ public class MetodosUsuario_sql {
 		
 		try {
 			conexion = ConexionBD.conectar();
-			String sentencia_buscar_usuario = ("SELECT NOMBRE, CORREO, CONTRASEÑA FROM USUARIO WHERE CORREO = '"+correo+"' && CONTRASEÑA = '"+ contraseña + "'");
+			String sentencia_buscar_usuario = ("SELECT NOMBRE, CORREO, CONTRASEÑA FROM USUARIO WHERE CORREO = ? AND CONTRASEÑA = ?");
 			sentencia_preparada = conexion.prepareStatement(sentencia_buscar_usuario);
+			sentencia_preparada.setString(1, correo);
+			sentencia_preparada.setString(2, contraseña);
 			resultado = sentencia_preparada.executeQuery();
 			if(resultado.next()) {
 				busqueda_usuario = "usuario encontrado";
@@ -121,13 +124,14 @@ public class MetodosUsuario_sql {
 		 Connection conexion = null;
 		 try {
 			 conexion  = ConexionBD.conectar();
-			 String sentencia_buscar = ("SELECT NOMBRE, CONTRASEÑA FROM administrador WHERE CORREO = '" + Codigo + "'");
+			 String sentencia_buscar = ("SELECT NOMBRE, CONTRASEÑA FROM administrador WHERE CODIGO = ?");
 			 sentencia_preparada = conexion.prepareStatement(sentencia_buscar); 
+			 sentencia_preparada.setString(1,Codigo);
 			 resultado = sentencia_preparada.executeQuery();
 			 if(resultado.next()) {
 				 String nombre = resultado.getString("NOMBRE");
 				 String contraseña = resultado.getString("CONTRASEÑA");
-				 busqueda_nombre = (nombre + " "+ contraseña);
+				 busqueda_nombre = (nombre);
 			 }
 			 
 			 conexion.close(); 
@@ -145,8 +149,10 @@ public class MetodosUsuario_sql {
 		
 		try {
 			conexion = ConexionBD.conectar();
-			String sentencia_buscar_usuario = ("SELECT NOMBRE, CORREO, CONTRASEÑA FROM administrador WHERE CORREO = '"+Codigo+"' && CONTRASEÑA = '"+ contraseña + "'");
+			String sentencia_buscar_usuario = ("SELECT CODIGO, NOMBRE, CONTRASEÑA FROM administrador WHERE CODIGO = ? AND CONTRASEÑA = ?");
 			sentencia_preparada = conexion.prepareStatement(sentencia_buscar_usuario);
+			sentencia_preparada.setString(1, Codigo);
+			sentencia_preparada.setString(2, contraseña);
 			resultado = sentencia_preparada.executeQuery();
 			if(resultado.next()) {
 				busqueda_usuario = "usuario encontrado";

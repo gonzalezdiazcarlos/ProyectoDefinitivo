@@ -21,7 +21,7 @@ public class MetodosCalzado {
 		int resultado = 0;
 		Connection conexion = null;
 		
-		String sentencia_guardar = "INSERT INTO calzado (Codigo,Nombre,Tipo,Cantidad,Precio,Color,Talla,Genero) VALUES ("+"'"+codigo+"',"+"'"+nombre+"',"+"'"+tipo+"',"+cantidad+"',"+"'"+precio+"',"+"'"+color+"',"+"'"+talla+"',"+"'"+genero+"'"+")";
+		String sentencia_guardar = "INSERT INTO calzado (Codigo,Nombre,Tipo,Cantidad,Precio,Color,Talla,Genero) VALUES (?,?,?,?,?,?,?,?)";
 		try {
 			conexion = ConexionBDcalzado.Conectar();
 			sentencia_preparada = conexion.prepareStatement(sentencia_guardar);
@@ -56,8 +56,10 @@ public class MetodosCalzado {
 		try {
 			
 			conexion = ConexionBDcalzado.Conectar();
-			String sentencia_busqueda_calzado = ("SELECT Nombre, Tipo, Color FROM calzado WHERE Tipo = '" +tipo+ "' && Color = '"+color+ "'");
+			String sentencia_busqueda_calzado = ("SELECT Nombre, Tipo, Color FROM calzado WHERE Tipo = ? AND Color = ?");
 			sentencia_preparada = conexion.prepareStatement(sentencia_busqueda_calzado);
+			sentencia_preparada.setString(1,nombre);
+			sentencia_preparada.setString(2,color);
 			resultado = sentencia_preparada.executeQuery();
 			if(resultado.next()) {
 				busqueda_calzado = "calzado encontrado";
