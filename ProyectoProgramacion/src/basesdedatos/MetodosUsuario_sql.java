@@ -3,6 +3,9 @@ package basesdedatos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MetodosUsuario_sql {
 	
@@ -33,6 +36,13 @@ public class MetodosUsuario_sql {
 			conexion.close();
 			
 		} catch (Exception e) {
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al guardar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
 			
 			System.out.println(e);
 		}
@@ -60,6 +70,14 @@ public class MetodosUsuario_sql {
 			conexion.close();
 			
 		} catch (Exception e) {
+			
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al guardar admin");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
 
 			System.out.println(e);
 		}
@@ -85,6 +103,13 @@ public class MetodosUsuario_sql {
 			 
 		 } catch (Exception e) {
 			 System.out.println(e);
+			 Logger logger = Logger.getLogger("My Logger");
+				logger.log(Level.ALL, "Error al buscar");
+				try {
+					logger.addHandler(new FileHandler("Logger.txt",true)); 
+				}catch (Exception e1) {
+					logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+				}
 		 }
 		 
 		 return busqueda_nombre;
@@ -114,6 +139,13 @@ public class MetodosUsuario_sql {
 			
 		}catch(Exception e) {
 			System.out.println(e);
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
 		}
 		
 		return busqueda_usuario;
@@ -138,6 +170,13 @@ public class MetodosUsuario_sql {
 			 
 		 } catch (Exception e) {
 			 System.out.println(e);
+			 Logger logger = Logger.getLogger("My Logger");
+				logger.log(Level.ALL, "Error al buscar");
+				try {
+					logger.addHandler(new FileHandler("Logger.txt",true)); 
+				}catch (Exception e1) {
+					logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+				}
 		 }
 		 
 		 return busqueda_nombre;
@@ -164,9 +203,51 @@ public class MetodosUsuario_sql {
 			
 		}catch(Exception e) {
 			System.out.println(e);
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
 		}
 		
 		return busqueda_usuario;
+	}
+	
+	public static int EliminarUsuario (String Correo) {
+		
+		int resultado = 0;
+		Connection conexion = null;
+		
+		String sentencia_guardar = "DELETE FROM usuario where Correo = ?";
+		try {
+			conexion = ConexionBD.conectar();
+			sentencia_preparada = conexion.prepareStatement(sentencia_guardar);
+			sentencia_preparada.setString(1,Correo);
+			
+			resultado = sentencia_preparada.executeUpdate();
+			sentencia_preparada.close();
+			
+			conexion.close();
+			
+			
+			
+		}catch (Exception e) {
+			System.out.println(e);
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
+			
+		}
+		
+		
+		return resultado;
+		
 	}
 	
 	

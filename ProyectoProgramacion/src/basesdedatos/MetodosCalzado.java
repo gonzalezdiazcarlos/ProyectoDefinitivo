@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MetodosCalzado {
 
@@ -40,6 +43,13 @@ public class MetodosCalzado {
 			conexion.close();
 			
 		} catch (Exception e) {
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al guardar calzado");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
 			System.out.println(e);
 		}
 	
@@ -70,6 +80,13 @@ public class MetodosCalzado {
 			conexion.close();
 			
 		} catch (Exception e) {
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar calzado");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
 			System.out.println(e);
 		}
 		return busqueda_calzado;
