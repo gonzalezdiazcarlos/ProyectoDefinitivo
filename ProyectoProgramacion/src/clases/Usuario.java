@@ -56,7 +56,14 @@ public String getContraseña() {
 public void setContraseña(String contraseña) {
 	Contraseña = contraseña;
 }
-  
+
+
+@Override
+public String toString() {
+	return "Usuario [Nombre=" + Nombre + ", Correo=" + Correo + ", Contraseña=" + Contraseña + "]";
+}
+
+
   
 	  
 

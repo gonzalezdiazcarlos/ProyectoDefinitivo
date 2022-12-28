@@ -3,9 +3,15 @@ package basesdedatos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import clases.Usuario;
+
 
 public class MetodosUsuario_sql {
 	
@@ -231,8 +237,6 @@ public class MetodosUsuario_sql {
 			
 			conexion.close();
 			
-			
-			
 		}catch (Exception e) {
 			System.out.println(e);
 			Logger logger = Logger.getLogger("My Logger");
@@ -245,11 +249,37 @@ public class MetodosUsuario_sql {
 			
 		}
 		
-		
 		return resultado;
 		
 	}
 	
+	public static ArrayList<Usuario> getUsuarios() {
+		Connection conexion = null;
+		conexion = ConexionBD.conectar();
+		try(Statement statement = conexion.createStatement()){
+			ArrayList<Usuario>usuarios = new ArrayList<>();
+			String sent = "SELECT * FROM usuario";
+			ResultSet rs = statement.executeQuery( sent );
+			while( rs.next() ) { // Leer el resultset
+				String nombre = rs.getString("NOMBRE");
+				String correo = rs.getString("CORREO");
+				String contraseña = rs.getString("CONTRASEÑA");
+				usuarios.add( new Usuario ( nombre, correo, contraseña));
+			}
+			return usuarios;
+			
+		}catch(Exception e) {
+			System.out.println(e);
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
+			return null;
+		}
+	}
 	
 	
 	
