@@ -83,6 +83,8 @@ public class frm_loginadmin extends JFrame {
 					frm_admin ventana = new frm_admin();
 					ventana.setVisible(true);
 					dispose();
+				}else {
+					JOptionPane.showMessageDialog(null, "El admin es incorrecto");
 				}
 			}
 		});

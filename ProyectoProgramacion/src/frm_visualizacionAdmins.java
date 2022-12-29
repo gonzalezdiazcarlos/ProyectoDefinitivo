@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import basesdedatos.MetodosUsuario_sql;
-import clases.Usuario;
+import clases.Administrador;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class frm_visualizacionUsuarios extends JFrame {
+public class frm_visualizacionAdmins extends JFrame {
 
 	private JPanel contentPane;
 
@@ -28,7 +28,7 @@ public class frm_visualizacionUsuarios extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_visualizacionUsuarios frame = new frm_visualizacionUsuarios();
+					frm_visualizacionAdmins frame = new frm_visualizacionAdmins();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,38 +40,39 @@ public class frm_visualizacionUsuarios extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_visualizacionUsuarios() {
+	public frm_visualizacionAdmins() {
 		
 		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 802, 502);
+		setBounds(100, 100, 817, 541);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblTitulo = new JLabel("Los clientes registrados son los siguientes:");
+		JLabel lblTitulo = new JLabel("Los usuarios administradores son los siguientes:");
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblTitulo.setBounds(10, 35, 368, 43);
+		lblTitulo.setBounds(10, 47, 380, 14);
 		contentPane.add(lblTitulo);
 		
-		DefaultListModel modelo = new DefaultListModel<>();
+		DefaultListModel modelo = new DefaultListModel();
 		
-		JList listaClientes = new JList();
-		listaClientes.setBounds(10, 89, 730, 198);
-		listaClientes.setModel(modelo);
-		contentPane.add(listaClientes);
+		JList ListaAdmins = new JList();
+		ListaAdmins.setBounds(10, 87, 698, 214);
+		ListaAdmins.setModel(modelo);
+		contentPane.add(ListaAdmins);
 		
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String Datos = listaClientes.getSelectedValue().toString();
+				
+				String Datos = ListaAdmins.getSelectedValue().toString();
 				//dividir los 3 elementos por las comas, coger el elemento del medio.
-				String [] Correo = Datos.split(",");
-				int i = metodos.EliminarUsuario(Correo[1]);
+				String [] Codigo = Datos.split(",");
+				int i = metodos.EliminarAdmin(Codigo[0]);
 				if( i > 0 ) {
 					JOptionPane.showMessageDialog(null, "Datos eliminados correctamente");
 				}else {
@@ -81,29 +82,28 @@ public class frm_visualizacionUsuarios extends JFrame {
 				
 			}
 		});
-		btnEliminar.setBounds(10, 318, 119, 43);
+		btnEliminar.setBounds(10, 352, 122, 58);
 		contentPane.add(btnEliminar);
 		
 		JButton btnMostrar = new JButton("Mostrar");
 		btnMostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrayList<Usuario> usuarios = metodos.getUsuarios();
+				ArrayList<Administrador> admins = metodos.getAdmins();
 				modelo.clear();
-				if (usuarios != null) {
-					for (Usuario u : usuarios) {
-						String nombre = u.getNombre();
-						String Correo = u.getCorreo();
-						String contraseña = u.getContraseña();
-						String Final = nombre + "," + Correo + "," + contraseña;
+				if(admins!= null) {
+					for(Administrador a : admins) {
+						String Codigo = a.getCodigo();
+						String Nombre = a.getNombre();
+						String Contraseña = a.getContraseña();
+						String Final =  Codigo + "," + Nombre + "," + Contraseña;
 						modelo.addElement(Final);
 					}
-					
 				}else {
-					JOptionPane.showMessageDialog(null, "No hay ningun usuario que cargar");
+					JOptionPane.showMessageDialog(null, "No hay ningun admin que cargar");
 				}
 			}
 		});
-		btnMostrar.setBounds(621, 318, 119, 43);
+		btnMostrar.setBounds(586, 352, 122, 58);
 		contentPane.add(btnMostrar);
 		
 		JButton btnRegresar = new JButton("Regresar");
@@ -114,7 +114,7 @@ public class frm_visualizacionUsuarios extends JFrame {
 				dispose();
 			}
 		});
-		btnRegresar.setBounds(621, 382, 119, 43);
+		btnRegresar.setBounds(586, 435, 122, 58);
 		contentPane.add(btnRegresar);
 	}
 }

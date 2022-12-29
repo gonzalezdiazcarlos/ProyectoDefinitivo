@@ -10,6 +10,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import clases.Administrador;
 import clases.Usuario;
 
 
@@ -253,6 +254,38 @@ public class MetodosUsuario_sql {
 		
 	}
 	
+	public static int EliminarAdmin (String Codigo) {
+		
+		int resultado = 0;
+		Connection conexion = null;
+		
+		String sentencia_guardar = "DELETE FROM administrador where Codigo = ?";
+		try {
+			conexion = ConexionBD.conectar();
+			sentencia_preparada = conexion.prepareStatement(sentencia_guardar);
+			sentencia_preparada.setString(1,Codigo);
+			
+			resultado = sentencia_preparada.executeUpdate();
+			sentencia_preparada.close();
+			
+			conexion.close();
+			
+		}catch (Exception e) {
+			System.out.println(e);
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
+			
+		}
+		
+		return resultado;
+		
+	}
+	
 	public static ArrayList<Usuario> getUsuarios() {
 		Connection conexion = null;
 		conexion = ConexionBD.conectar();
@@ -281,9 +314,34 @@ public class MetodosUsuario_sql {
 		}
 	}
 	
-	
-	
-	
+	public static ArrayList<Administrador> getAdmins(){
+		Connection conexion = null;
+		conexion = ConexionBD.conectar();
+		try(Statement statement = conexion.createStatement()){
+			ArrayList<Administrador>admins = new ArrayList<>();
+			String sent = "SELECT * FROM administrador";
+			ResultSet rs = statement.executeQuery( sent );
+			while( rs.next() ) { // Leer el resultset
+				String codigo = rs.getString("CODIGO");
+				String nombre = rs.getString("NOMBRE");
+				String contraseña = rs.getString("CONTRASEÑA");
+				admins.add( new Administrador (codigo , nombre, contraseña));
+			}
+			return admins ;
+			
+		}catch(Exception e) {
+			System.out.println(e);
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
+			return null;
+		}
+		
+	}
 	
 
 }

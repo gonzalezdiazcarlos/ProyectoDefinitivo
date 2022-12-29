@@ -74,6 +74,8 @@ public class frm_loginusuario extends JFrame {
 					frm_usuariomain ventana = new frm_usuariomain();
 					ventana.setVisible(true);
 					dispose();
+				}else {
+					JOptionPane.showMessageDialog(null, "El usuario es incorrecto");
 				}
 			} 
 		});

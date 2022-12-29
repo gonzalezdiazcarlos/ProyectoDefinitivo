@@ -53,10 +53,9 @@ public class frm_basedatos extends JFrame {
 		JButton btnNewButton = new JButton("Ver Clientes");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				
-					
+				frm_visualizacionUsuarios ventana = new frm_visualizacionUsuarios();
+				ventana.setVisible(true);
+				dispose();
 				}
 		});
 		btnNewButton.setBounds(60, 26, 107, 23);
@@ -65,6 +64,9 @@ public class frm_basedatos extends JFrame {
 		JButton btnNewButton_1 = new JButton("Ver Administradores");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frm_visualizacionAdmins ventana = new frm_visualizacionAdmins();
+				ventana.setVisible(true);
+				dispose();
 			}
 		});
 		btnNewButton_1.setBounds(229, 26, 144, 23);
@@ -73,6 +75,17 @@ public class frm_basedatos extends JFrame {
 		JList list = new JList();
 		list.setBounds(373, 221, -282, -101);
 		contentPane.add(list);
+		
+		JButton btnRegresar = new JButton("Regresar");
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frm_admin ventana = new frm_admin();
+				ventana.setVisible(true);
+				dispose();
+			}
+		});
+		btnRegresar.setBounds(284, 221, 89, 23);
+		contentPane.add(btnRegresar);
 	}
 	
 	private Connection conn;
