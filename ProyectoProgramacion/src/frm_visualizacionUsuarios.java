@@ -14,12 +14,16 @@ import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 public class frm_visualizacionUsuarios extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField DireccionFichero;
 
 	/**
 	 * Launch the application.
@@ -81,7 +85,7 @@ public class frm_visualizacionUsuarios extends JFrame {
 				
 			}
 		});
-		btnEliminar.setBounds(10, 318, 119, 43);
+		btnEliminar.setBounds(492, 318, 119, 43);
 		contentPane.add(btnEliminar);
 		
 		JButton btnMostrar = new JButton("Mostrar");
@@ -116,5 +120,38 @@ public class frm_visualizacionUsuarios extends JFrame {
 		});
 		btnRegresar.setBounds(621, 382, 119, 43);
 		contentPane.add(btnRegresar);
+		
+		JButton btnFichero = new JButton("Mandar a fichero");
+		btnFichero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList <Usuario> usuarios = metodos.getUsuarios();
+				if(usuarios!=null) {
+						try(FileWriter writer = new FileWriter(DireccionFichero.getSelectedText())) {
+							for(Usuario u :  usuarios) {
+								writer.nullWriter();
+								String Usuario = u.getNombre() + "," + u.getCorreo() + "," + u.getContraseña();
+								writer.write(Usuario);
+								writer.write("\n");
+							}
+						}catch (IOException e3) {
+							System.out.println("Error");
+						}
+						JOptionPane.showMessageDialog(null, "Datos escritos correctamente");
+				}
+			}
+		});
+		btnFichero.setBounds(227, 392, 151, 23);
+		contentPane.add(btnFichero);
+		
+		JLabel lblTitulo2 = new JLabel("Introduce la direccion del fichero donde quieres guardar los datos:");
+		lblTitulo2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblTitulo2.setBounds(10, 319, 361, 14);
+		contentPane.add(lblTitulo2);
+		
+		DireccionFichero = new JTextField();
+		DireccionFichero.setBounds(10, 352, 368, 20);
+		contentPane.add(DireccionFichero);
+		DireccionFichero.setColumns(10);
+		
 	}
 }

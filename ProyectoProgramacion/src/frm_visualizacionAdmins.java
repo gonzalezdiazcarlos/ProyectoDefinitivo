@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 
 import basesdedatos.MetodosUsuario_sql;
 import clases.Administrador;
+import clases.Usuario;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -14,12 +15,16 @@ import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 public class frm_visualizacionAdmins extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField DireccionFichero;
 
 	/**
 	 * Launch the application.
@@ -82,7 +87,7 @@ public class frm_visualizacionAdmins extends JFrame {
 				
 			}
 		});
-		btnEliminar.setBounds(10, 352, 122, 58);
+		btnEliminar.setBounds(440, 352, 122, 58);
 		contentPane.add(btnEliminar);
 		
 		JButton btnMostrar = new JButton("Mostrar");
@@ -116,5 +121,37 @@ public class frm_visualizacionAdmins extends JFrame {
 		});
 		btnRegresar.setBounds(586, 435, 122, 58);
 		contentPane.add(btnRegresar);
+		
+		JLabel lblTitulo2 = new JLabel("Introduce la direccion de fichero donde quieres guardar los datos:");
+		lblTitulo2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblTitulo2.setBounds(10, 352, 387, 14);
+		contentPane.add(lblTitulo2);
+		
+		DireccionFichero = new JTextField();
+		DireccionFichero.setBounds(10, 377, 361, 20);
+		contentPane.add(DireccionFichero);
+		DireccionFichero.setColumns(10);
+		
+		JButton btnMostrarFichero = new JButton("Mandar a fichero");
+		btnMostrarFichero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList <Administrador> admins = metodos.getAdmins();
+				if(admins!=null) {
+						try(FileWriter writer = new FileWriter(DireccionFichero.getSelectedText())) {
+							for(Administrador a :  admins) {
+								writer.nullWriter();
+								String Usuario = a.getCodigo() + "," + a.getNombre() + "," + a.getContraseña();
+								writer.write(Usuario);
+								writer.write("\n");
+							}
+						}catch (IOException e3) {
+							System.out.println("Error");
+						}
+						JOptionPane.showMessageDialog(null, "Datos escritos correctamente");
+				}
+			}
+		});
+		btnMostrarFichero.setBounds(247, 408, 122, 23);
+		contentPane.add(btnMostrarFichero);
 	}
 }
