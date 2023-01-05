@@ -6,6 +6,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
 
 public class frm_usuariomain extends JFrame {
 
@@ -32,41 +34,49 @@ public class frm_usuariomain extends JFrame {
 	 */
 	public frm_usuariomain() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 817, 502);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(128, 255, 255));
+		contentPane.setForeground(new Color(0, 0, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Hombre");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnHombre = new JButton("Hombre");
+		btnHombre.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnHombre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
 			}
 		});
-		btnNewButton.setBounds(36, 47, 89, 23);
-		contentPane.add(btnNewButton);
+		btnHombre.setBounds(255, 257, 261, 158);
+		contentPane.add(btnHombre);
 		
-		JButton btnNewButton_1 = new JButton("Mujer");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnMujer = new JButton("Mujer");
+		btnMujer.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnMujer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(153, 47, 89, 23);
-		contentPane.add(btnNewButton_1);
+		btnMujer.setBounds(255, 50, 261, 158);
+		contentPane.add(btnMujer);
 		
-		JButton btnNewButton_2 = new JButton("Buscar");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton btnCestaCompra = new JButton("Cesta");
+		btnCestaCompra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_2.setBounds(267, 47, 145, 23);
-		contentPane.add(btnNewButton_2);
+		btnCestaCompra.setBounds(690, 11, 103, 47);
+		contentPane.add(btnCestaCompra);
+		
+		JButton btnRegresar = new JButton("Regresar");
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnRegresar.setBounds(690, 431, 103, 23);
+		contentPane.add(btnRegresar);
 	}
-	
-	
-	
-
 }
