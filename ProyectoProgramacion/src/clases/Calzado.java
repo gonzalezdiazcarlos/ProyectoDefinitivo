@@ -2,17 +2,17 @@ package clases;
 
 public class Calzado {
 	
-	private int Codigo;
+	private String Codigo;
 	private String Nombre;
 	private String Tipo;
-	private int Cantidad;
-	private int Precio;
+	private String Cantidad;
+	private String Precio;
 	private String Color;
-	public int Talla;
+	public String Talla;
 	public String Genero;
 	
 	
-	public Calzado(int codigo, String nombre, String tipo, int cantidad, int precio, String color, int talla,
+	public Calzado(String codigo, String nombre, String tipo, String cantidad, String precio, String color, String talla,
 			String genero) {
 		super();
 		Codigo = codigo;
@@ -35,12 +35,12 @@ public class Calzado {
 	
 
 
-	public int getCodigo() {
+	public String getCodigo() {
 		return Codigo;
 	}
 
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		Codigo = codigo;
 	}
 
@@ -65,22 +65,22 @@ public class Calzado {
 	}
 
 
-	public int getCantidad() {
+	public String getCantidad() {
 		return Cantidad;
 	}
 
 
-	public void setCantidad(int cantidad) {
+	public void setCantidad(String cantidad) {
 		Cantidad = cantidad;
 	}
 
 
-	public int getPrecio() {
+	public String getPrecio() {
 		return Precio;
 	}
 
 
-	public void setPrecio(int precio) {
+	public void setPrecio(String precio) {
 		Precio = precio;
 	}
 
@@ -95,12 +95,12 @@ public class Calzado {
 	}
 
 
-	public int getTalla() {
+	public String getTalla() {
 		return Talla;
 	}
 
 
-	public void setTalla(int talla) {
+	public void setTalla(String talla) {
 		Talla = talla;
 	}
 

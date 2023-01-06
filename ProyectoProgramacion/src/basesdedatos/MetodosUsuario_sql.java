@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import clases.Administrador;
+import clases.Calzado;
 import clases.Usuario;
 
 
@@ -342,6 +343,160 @@ public class MetodosUsuario_sql {
 		}
 		
 	}
+	
+public int guardarCalzado(String codigo, String nombre, String tipo, int cantidad, int precio, String color, int talla, String genero) {
+		
+		int resultado = 0;
+		Connection conexion = null;
+		
+		String sentencia_guardar = "INSERT INTO calzado (Codigo,Nombre,Tipo,Cantidad,Precio,Color,Talla,Genero) VALUES (?,?,?,?,?,?,?,?)";
+		try {
+			conexion = ConexionBD.conectar();
+			sentencia_preparada = conexion.prepareStatement(sentencia_guardar);
+			sentencia_preparada.setString(1, codigo);
+			sentencia_preparada.setString(2, nombre);
+			sentencia_preparada.setString(3, tipo);
+			sentencia_preparada.setInt(4, cantidad);
+			sentencia_preparada.setInt(5, precio);
+			sentencia_preparada.setString(6, color);
+			sentencia_preparada.setInt(7, talla);
+			sentencia_preparada.setString(8, genero);
+			
+			resultado = sentencia_preparada.executeUpdate();
+			sentencia_preparada.close();
+			
+			conexion.close();
+			
+		} catch (Exception e) {
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al guardar calzado");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
+			System.out.println(e);
+		}
+	
+		return resultado;
+	}
+	
+		
+	
+	
+	public String buscarNombreCalzado (String nombre , String tipo, String color) {
+		String busqueda_calzado = null;
+		Connection conexion = null;
+		
+		try {
+			
+			conexion = ConexionBD.conectar();
+			String sentencia_busqueda_calzado = ("SELECT Nombre, Tipo, Color FROM calzado WHERE Tipo = ? AND Color = ?");
+			sentencia_preparada = conexion.prepareStatement(sentencia_busqueda_calzado);
+			sentencia_preparada.setString(1,nombre);
+			sentencia_preparada.setString(2,color);
+			resultado = sentencia_preparada.executeQuery();
+			if(resultado.next()) {
+				busqueda_calzado = "calzado encontrado";
+			}else {
+				busqueda_calzado = "calzado no encontrado";
+				
+			}
+			conexion.close();
+			
+		} catch (Exception e) {
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar calzado");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
+			System.out.println(e);
+		}
+		return busqueda_calzado;
+		
+		
+	}
+	
+	public int guardarPedidos (String Usuario, String Codigo, String Nombre, String Tipo, String Cantidad, String Precio, String Color, String Talla, String Genero) {
+		
+		int resultado = 0;
+		Connection conexion = null;
+		
+		String sentencia_guardar = "INSERT INTO pedidos (Usuario,Codigo,Nombre,Tipo,Cantidad,Precio,Color,Talla,Genero) VALUES (?,?,?,?,?,?,?,?,?)";
+		
+		try {
+			conexion = ConexionBD.conectar();
+			sentencia_preparada = conexion.prepareStatement(sentencia_guardar);
+			sentencia_preparada.setString(1,Usuario);
+			sentencia_preparada.setString(2,Codigo);
+			sentencia_preparada.setString(3,Nombre);
+			sentencia_preparada.setString(4,Tipo);
+			sentencia_preparada.setString(5,Cantidad);
+			sentencia_preparada.setString(6,Precio);
+			sentencia_preparada.setString(7,Color);
+			sentencia_preparada.setString(8,Talla);
+			sentencia_preparada.setString(9,Genero);
+			
+			
+			resultado = sentencia_preparada.executeUpdate();
+			sentencia_preparada.close();
+			
+			conexion.close();
+			
+		} catch (Exception e) {
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al guardar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
+			
+			System.out.println(e);
+		}
+		return resultado;
+	
+	}
+	
+	public static ArrayList<Calzado> getCalzado(String Nombre) {
+		Connection conexion = null;
+		conexion = ConexionBD.conectar();
+		String sent = "SELECT * FROM calzado where Nombre = ?";
+		try(Statement statement = conexion.createStatement()){
+			ArrayList<Calzado>Calzados = new ArrayList<>();
+			sentencia_preparada = conexion.prepareStatement(sent);
+			sentencia_preparada.setString(1, Nombre);
+			ResultSet rs = sentencia_preparada.executeQuery();
+			while( rs.next() ) { // Leer el resultset
+				String Codigo = rs.getString("Codigo");
+				String Nombre1 = rs.getString("Nombre");
+				String Tipo = rs.getString("Tipo");
+				String Cantidad = rs.getString("Cantidad");
+				String Precio = rs.getString("Precio");
+				String Color = rs.getString("Color");
+				String Talla = rs.getString("Talla");
+				String Genero = rs.getString("Genero");
+				Calzados.add( new Calzado (Codigo,Nombre1,Tipo,Cantidad,Precio,Color,Talla,Genero));
+			}
+			return Calzados;
+			
+		}catch(Exception e) {
+			System.out.println(e);
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
+			return null;
+		}
+	}
+	
+	
+	
 	
 
 }

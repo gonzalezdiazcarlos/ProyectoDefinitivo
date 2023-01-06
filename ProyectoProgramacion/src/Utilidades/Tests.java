@@ -42,7 +42,7 @@ public class Tests {
 	void test() {
 	 assertAll(
 			 
-			 ()->assertTrue(shoe.getCodigo()==7),
+			 ()->assertTrue(shoe.getCodigo()=="7"),
 			 
 			 ()->assertNotNull(shoe.getGenero()),
 			 
