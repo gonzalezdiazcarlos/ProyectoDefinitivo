@@ -6,6 +6,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class frm_calzadoHombre extends JFrame {
 
@@ -40,6 +42,8 @@ public class frm_calzadoHombre extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
+		
 		JButton btnCestaCompra = new JButton("Cesta ");
 		btnCestaCompra.setBounds(690, 11, 103, 47);
 		contentPane.add(btnCestaCompra);
@@ -54,6 +58,13 @@ public class frm_calzadoHombre extends JFrame {
 		contentPane.add(btnDeportivas);
 		
 		JButton btnCasual = new JButton("Casual");
+		btnCasual.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frm_calzadoCasual ventana  = new frm_calzadoCasual();
+				ventana.setVisible(true);
+				dispose();
+			}
+		});
 		btnCasual.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		btnCasual.setBounds(39, 58, 273, 143);
 		contentPane.add(btnCasual);

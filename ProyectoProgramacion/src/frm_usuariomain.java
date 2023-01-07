@@ -48,6 +48,10 @@ public class frm_usuariomain extends JFrame {
 		btnHombre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				frm_calzadoHombre ventana = new frm_calzadoHombre();
+				ventana.setVisible(true);
+				dispose();
+				
 				
 			}
 		});

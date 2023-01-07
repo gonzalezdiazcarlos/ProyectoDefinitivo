@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import clases.Administrador;
 import clases.Calzado;
+import clases.Pedidos;
 import clases.Usuario;
 
 
@@ -493,6 +494,46 @@ public int guardarCalzado(String codigo, String nombre, String tipo, int cantida
 			}
 			return null;
 		}
+		
+		
+	}
+	
+	public static ArrayList<Pedidos> getPedidos(String Nombre) {
+		Connection conexion = null;
+		conexion = ConexionBD.conectar();
+		String sent = "SELECT * FROM pedidos where Usuario = ?";
+		try(Statement statement = conexion.createStatement()){
+			ArrayList<Pedidos>Pedidos = new ArrayList<>();
+			sentencia_preparada = conexion.prepareStatement(sent);
+			sentencia_preparada.setString(1, Nombre);
+			ResultSet rs = sentencia_preparada.executeQuery();
+			while( rs.next() ) { // Leer el resultset
+				String Correo = rs.getString("Usuario");
+				String Codigo = rs.getString("Codigo");
+				String Nombre1 = rs.getString("Nombre");
+				String Tipo = rs.getString("Tipo");
+				String Cantidad = rs.getString("Cantidad");
+				String Precio = rs.getString("Precio");
+				String Color = rs.getString("Color");
+				String Talla = rs.getString("Talla");
+				String Genero = rs.getString("Genero");
+				Pedidos.add( new Pedidos (Correo,Codigo,Nombre1,Tipo,Cantidad,Precio,Color,Talla,Genero));
+			}
+			return Pedidos;
+			
+		}catch(Exception e) {
+			System.out.println(e);
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
+			return null;
+		}
+		
+		
 	}
 	
 	

@@ -19,6 +19,7 @@ public class frm_loginusuario extends JFrame {
 	private JPanel contentPane;
 	private JPasswordField txtContraseña;
 	private JTextField txtCorreo;
+	public static String DatoCorreo;
 
 	/**
 	 * Launch the application.
@@ -42,6 +43,7 @@ public class frm_loginusuario extends JFrame {
 	public frm_loginusuario() {
 		
 		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
+		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 731, 517);
@@ -71,6 +73,7 @@ public class frm_loginusuario extends JFrame {
 				if(busqueda_usuario.equals("usuario encontrado")) {
 					String busqueda_nombre = metodos.buscarNombre(txtCorreo.getText());
 					JOptionPane.showMessageDialog(null, "Bienvenido" + "" + busqueda_nombre);
+					DatoCorreo = txtCorreo.getText();
 					frm_usuariomain ventana = new frm_usuariomain();
 					ventana.setVisible(true);
 					dispose();

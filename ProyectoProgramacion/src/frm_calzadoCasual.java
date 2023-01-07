@@ -10,6 +10,7 @@ import clases.Calzado;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JComboBox;
@@ -21,6 +22,7 @@ import java.awt.event.ActionEvent;
 public class frm_calzadoCasual extends JFrame {
 
 	private JPanel contentPane;
+	public String DatoCorreo;
 
 	/**
 	 * Launch the application.
@@ -55,8 +57,19 @@ public class frm_calzadoCasual extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnCestaCompra = new JButton("Cesta");
+		btnCestaCompra.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frm_cesta ventana = new frm_cesta();
+				ventana.setVisible(true);
+				dispose();
+				
+			}
+		});
 		btnCestaCompra.setBounds(690, 11, 103, 47);
 		contentPane.add(btnCestaCompra);
+		
+		frm_loginusuario frm = new frm_loginusuario();
+		DatoCorreo = frm.DatoCorreo;
 		
 		JButton btnRegresar = new JButton("Regresar");
 		btnRegresar.setBounds(690, 431, 103, 23);
@@ -67,12 +80,47 @@ public class frm_calzadoCasual extends JFrame {
 		lblCasual1.setBounds(53, 50, 203, 169);
 		contentPane.add(lblCasual1);
 		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7"}));
+		comboBox_1.setBounds(143, 312, 51, 22);
+		contentPane.add(comboBox_1);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Tahoma", Font.BOLD, 16));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"39", "40", "41", "42", "43", "44", "45", "46"}));
+		comboBox.setBounds(109, 276, 51, 22);
+		contentPane.add(comboBox);
+		
 		JButton btnAñadirCesta = new JButton("Añadir Cesta");
 		btnAñadirCesta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ArrayList<Calzado>calzado = metodos.getCalzado("Bratton Lace");
+				Object cantidad = comboBox_1.getSelectedItem();
+				String Cantidad = String.valueOf(cantidad);
 				
+				Object talla = comboBox.getSelectedItem();
+				String Talla = String.valueOf(talla);
+				
+				
+				ArrayList<Calzado>calzado = metodos.getCalzado("Bratton Lace");
+				for(Calzado c : calzado) {
+					String Codigo = c.getCodigo();
+					String Nombre = c.getNombre();
+					String Tipo = c.getTipo();
+					//cantidad
+					String Precio = c.getPrecio();
+					String Color = c.getColor();
+					//talla
+					String Genero = c.getGenero();
+					
+					int i= metodos.guardarPedidos(DatoCorreo,Codigo,Nombre,Tipo,Cantidad,Precio,Color,Talla,Genero);
+					if( i > 0 ) {
+						JOptionPane.showMessageDialog(null, "Datos añadidos a la cesta correctamente");
+					}else {
+						JOptionPane.showMessageDialog(null,"no se pudo añadir los datos a la cesta");
+					}
+				}
 				
 			}
 		});
@@ -95,21 +143,85 @@ public class frm_calzadoCasual extends JFrame {
 		lblTalla.setBounds(53, 275, 60, 23);
 		contentPane.add(lblTalla);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("Tahoma", Font.BOLD, 16));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"39", "40", "41", "42", "43", "44", "45", "46"}));
-		comboBox.setBounds(109, 276, 51, 22);
-		contentPane.add(comboBox);
 		
 		JLabel lblCantidad = new JLabel("Cantidad:");
 		lblCantidad.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblCantidad.setBounds(53, 309, 97, 23);
 		contentPane.add(lblCantidad);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7"}));
-		comboBox_1.setBounds(143, 312, 51, 22);
-		contentPane.add(comboBox_1);
+		JLabel lblHanfordLauren = new JLabel("Hanford Lauren");
+		lblHanfordLauren.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblHanfordLauren.setBounds(349, 15, 186, 31);
+		contentPane.add(lblHanfordLauren);
+		
+		JLabel lblCasual1_1 = new JLabel("");
+		lblCasual1_1.setIcon(new ImageIcon("C:\\Users\\Alumno\\Desktop\\casual4.jpg"));
+		lblCasual1_1.setBounds(349, 50, 203, 169);
+		contentPane.add(lblCasual1_1);
+		
+		JLabel lblPrecio_1 = new JLabel("150 $");
+		lblPrecio_1.setForeground(Color.BLACK);
+		lblPrecio_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblPrecio_1.setBounds(349, 230, 77, 23);
+		contentPane.add(lblPrecio_1);
+		
+		JLabel lblTalla_1 = new JLabel("Talla:");
+		lblTalla_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblTalla_1.setBounds(349, 275, 60, 23);
+		contentPane.add(lblTalla_1);
+		
+		JComboBox comboBox_2 = new JComboBox();
+		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"39", "40", "41", "42", "43", "44", "45", "46"}));
+		comboBox_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		comboBox_2.setBounds(405, 276, 51, 22);
+		contentPane.add(comboBox_2);
+		
+		JLabel lblCantidad_1 = new JLabel("Cantidad:");
+		lblCantidad_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblCantidad_1.setBounds(349, 309, 97, 23);
+		contentPane.add(lblCantidad_1);
+		
+		JComboBox comboBox_1_1 = new JComboBox();
+		comboBox_1_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7"}));
+		comboBox_1_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		comboBox_1_1.setBounds(439, 312, 51, 22);
+		contentPane.add(comboBox_1_1);
+		
+		JButton btnAñadirCesta_1 = new JButton("Añadir Cesta");
+		btnAñadirCesta_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Object cantidad = comboBox_1_1.getSelectedItem();
+				String Cantidad = String.valueOf(cantidad);
+				
+				Object talla = comboBox_2.getSelectedItem();
+				String Talla = String.valueOf(talla);
+				
+				
+				ArrayList<Calzado>calzado = metodos.getCalzado("Hanford Lauren");
+				for(Calzado c : calzado) {
+					String Codigo = c.getCodigo();
+					String Nombre = c.getNombre();
+					String Tipo = c.getTipo();
+					//cantidad
+					String Precio = c.getPrecio();
+					String Color = c.getColor();
+					//talla
+					String Genero = c.getGenero();
+					
+					int i= metodos.guardarPedidos(DatoCorreo,Codigo,Nombre,Tipo,Cantidad,Precio,Color,Talla,Genero);
+					if( i > 0 ) {
+						JOptionPane.showMessageDialog(null, "Datos añadidos a la cesta correctamente");
+					}else {
+						JOptionPane.showMessageDialog(null,"no se pudo añadir los datos a la cesta");
+					}
+				}
+			}
+		});
+		btnAñadirCesta_1.setBounds(349, 353, 159, 23);
+		contentPane.add(btnAñadirCesta_1);
+		
+	
+		
 	}
 }
