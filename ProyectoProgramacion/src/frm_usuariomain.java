@@ -62,6 +62,9 @@ public class frm_usuariomain extends JFrame {
 		btnMujer.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		btnMujer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frm_calzadoMujer ventana = new frm_calzadoMujer();
+				ventana.setVisible(true);
+				dispose();
 			}
 		});
 		btnMujer.setBounds(255, 50, 261, 158);

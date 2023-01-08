@@ -536,6 +536,47 @@ public int guardarCalzado(String codigo, String nombre, String tipo, int cantida
 		
 	}
 	
+	public static int EliminarPedido (String Usuario,String Codigo,String Nombre,String Tipo,String Cantidad,String Precio,String Color,String Talla,String Genero) {
+		
+		int resultado = 0;
+		Connection conexion = null;
+		
+		String sentencia_guardar = "DELETE FROM pedidos where Usuario = ? AND Codigo = ? AND Nombre = ? AND Tipo = ? AND Cantidad = ? AND Precio = ? AND Color = ? AND Talla = ? AND Genero = ?";
+		try {
+			conexion = ConexionBD.conectar();
+			sentencia_preparada = conexion.prepareStatement(sentencia_guardar);
+			sentencia_preparada.setString(1,Usuario);
+			sentencia_preparada.setString(2,Codigo);
+			sentencia_preparada.setString(3,Nombre);
+			sentencia_preparada.setString(4,Tipo);
+			sentencia_preparada.setString(5,Cantidad);
+			sentencia_preparada.setString(6,Precio);
+			sentencia_preparada.setString(7,Color);
+			sentencia_preparada.setString(8,Talla);
+			sentencia_preparada.setString(9,Genero);
+			
+			
+			resultado = sentencia_preparada.executeUpdate();
+			sentencia_preparada.close();
+			
+			conexion.close();
+			
+		}catch (Exception e) {
+			System.out.println(e);
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
+			
+		}
+		
+		return resultado;
+		
+	}
+	
 	
 	
 	

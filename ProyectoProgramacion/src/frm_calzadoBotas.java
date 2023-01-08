@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class frm_calzadoCasual extends JFrame {
+public class frm_calzadoBotas extends JFrame {
 
 	private JPanel contentPane;
 	public String DatoCorreo;
@@ -31,7 +31,7 @@ public class frm_calzadoCasual extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_calzadoCasual frame = new frm_calzadoCasual();
+					frm_calzadoBotas frame = new frm_calzadoBotas();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class frm_calzadoCasual extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_calzadoCasual() {
+	public frm_calzadoBotas() {
 		
 		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
 		
@@ -83,7 +83,7 @@ public class frm_calzadoCasual extends JFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Tahoma", Font.BOLD, 16));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"39", "40", "41", "42", "43", "44", "45", "46"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"35", "36", "37", "38", "39", "40", "41"}));
 		comboBox.setBounds(109, 276, 51, 22);
 		contentPane.add(comboBox);
 		
@@ -98,7 +98,7 @@ public class frm_calzadoCasual extends JFrame {
 				String Talla = String.valueOf(talla);
 				
 				
-				ArrayList<Calzado>calzado = metodos.getCalzado("Bratton Lace");
+				ArrayList<Calzado>calzado = metodos.getCalzado("Botas Chelsea");
 				for(Calzado c : calzado) {
 					String Codigo = c.getCodigo();
 					String Nombre = c.getNombre();
@@ -128,7 +128,7 @@ public class frm_calzadoCasual extends JFrame {
 		lblPrecio.setBounds(52, 230, 77, 23);
 		contentPane.add(lblPrecio);
 		
-		JLabel lblNombreZapato = new JLabel("Bratton Lace");
+		JLabel lblNombreZapato = new JLabel("Botas Chelsea");
 		lblNombreZapato.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNombreZapato.setBounds(53, 15, 141, 31);
 		contentPane.add(lblNombreZapato);
@@ -144,7 +144,7 @@ public class frm_calzadoCasual extends JFrame {
 		lblCantidad.setBounds(53, 309, 97, 23);
 		contentPane.add(lblCantidad);
 		
-		JLabel lblHanfordLauren = new JLabel("Hanford Lauren");
+		JLabel lblHanfordLauren = new JLabel("Plumers 9314");
 		lblHanfordLauren.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblHanfordLauren.setBounds(349, 15, 186, 31);
 		contentPane.add(lblHanfordLauren);
@@ -161,7 +161,7 @@ public class frm_calzadoCasual extends JFrame {
 		contentPane.add(lblTalla_1);
 		
 		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"39", "40", "41", "42", "43", "44", "45", "46"}));
+		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"35", "36", "37", "38", "39", "40", "41"}));
 		comboBox_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		comboBox_2.setBounds(405, 276, 51, 22);
 		contentPane.add(comboBox_2);
@@ -188,7 +188,7 @@ public class frm_calzadoCasual extends JFrame {
 				String Talla = String.valueOf(talla);
 				
 				
-				ArrayList<Calzado>calzado = metodos.getCalzado("Hanford Lauren");
+				ArrayList<Calzado>calzado = metodos.getCalzado("Plumers 9314");
 				for(Calzado c : calzado) {
 					String Codigo = c.getCodigo();
 					String Nombre = c.getNombre();
