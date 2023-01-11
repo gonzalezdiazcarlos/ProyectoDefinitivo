@@ -18,13 +18,14 @@ public class Hilo {
 	static class facturacion implements Callable<Integer> {
 	    Deque<String> pilaCola = new ConcurrentLinkedDeque<>();
         private int contador=0;
-        public  facturacion( Deque<String> pilaCola) {
-            this.pilaCola = pilaCola;
+        public  facturacion( ) {
+            
         }
 		@Override
 		public Integer call() throws Exception {
 			for (Map.Entry<String,Integer>entry : codeMoney.entrySet()) {
                 contador = contador + entry.getValue();
+                Thread.sleep(2000);
 		}return contador;}
     }
 	
@@ -32,14 +33,15 @@ public class Hilo {
 	    Deque<String> pilaCola = new ConcurrentLinkedDeque<>();
         private int trabajadores;
         private int end = codeMoney.size();
-        public numeroClientes( Deque<String> pilaCola) {
-            this.pilaCola = pilaCola;
-            this.trabajadores=trabajadores;
+        public numeroClientes( ) {
+           
+
         } 
 		@Override
 		public Integer call() throws Exception {
 			for (int i = 0; i <= end; i++) {
                 trabajadores+=1;
+                Thread.sleep(2000);
 		}
 			return trabajadores;
     }
@@ -47,17 +49,20 @@ public class Hilo {
 	
 	
  public static Map<String,Integer> threadA(String A) {
-	 
     Deque<String> pilaCola = new ConcurrentLinkedDeque<>();
     Deque<String> pilaCol = new ConcurrentLinkedDeque<>();
 
+    Callable call1 = new facturacion();
+	Callable call2 = new numeroClientes();
+	
+	
     
-    Thread hilo1 = new Thread(new facturacion(pilaCola));//hilo uno cuenta facturacion
-    
-    
-    Thread hilo2 = new Thread(new numeroClientes(pilaCol));//hilo dos cuenta codigos distintos(Nº clientes)
+    Thread hilo1 = new Thread((Runnable)call1);//hilo uno cuenta facturacion   
+    Thread hilo2 = new Thread((Runnable)call2);//hilo dos cuenta codigos distintos(Nº clientes)
+    hilo1.start();
+    hilo2.start();
 
-
+    
 	Map<String,Integer> clientesFact = new HashMap<>();
     clientesFact.put(A, null);
     
