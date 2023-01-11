@@ -6,6 +6,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
+import Utilidades.Newsletter;
+
 import java.util.logging.Logger;
 
 import basesdedatos.MetodosUsuario_sql;
@@ -18,12 +21,14 @@ import java.util.ArrayList;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.mail.MessagingException;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.ListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
@@ -173,7 +178,16 @@ public class frm_cesta extends JFrame {
 						int Cantidad = Integer.parseInt(p.getCantidad());
 						int Precio = Integer.parseInt(p.getPrecio());
 						PrecioTotal = PrecioTotal + Cantidad*Precio;
+					}Newsletter newsletter=null;
+					try {
+						newsletter = new Newsletter("proyectodefinitivoprogram@gmail.com");
+					} catch (IOException e2) {
+						e2.printStackTrace();
 					}
+				try {	newsletter.biggestOrderSendMail(MetodosUsuario_sql.biggestOrder());
+				}catch (MessagingException e1) {
+					e1.printStackTrace();
+				}
 					
 				}else {
 					JOptionPane.showMessageDialog(null, "La cesta esta vacia");
