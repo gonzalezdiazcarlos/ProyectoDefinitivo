@@ -80,7 +80,7 @@ public class frm_loginadmin extends JFrame {
 				if(busqueda_usuario.equals("usuario encontrado")) {
 					String busqueda_nombre = metodos.buscarNombreAdmin(txtCODIGO.getText());
 					JOptionPane.showMessageDialog(null, "Bienvenido" + busqueda_nombre);
-					frm_admin ventana = new frm_admin();
+					VentanaAdmin ventana = new VentanaAdmin();
 					ventana.setVisible(true);
 					dispose();
 				}else {

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import clases.*;
 import basesdedatos.*;
@@ -14,36 +15,35 @@ public class Hilo {
 	static Map<String,Integer> codeMoney = MetodosUsuario_sql.returnMapPedidos();// codigo y dinero
 	
 	
-	static class facturacion implements Runnable {
+	static class facturacion implements Callable<Integer> {
 	    Deque<String> pilaCola = new ConcurrentLinkedDeque<>();
         private int contador=0;
         public  facturacion( Deque<String> pilaCola) {
             this.pilaCola = pilaCola;
         }
-        public void run() {
-            // vamos sumando el dinero
-            for (Map.Entry<String,Integer>entry : codeMoney.entrySet()) {
-                     contador = contador + entry.getValue();
-                     
-
-            }
-        }
+		@Override
+		public Integer call() throws Exception {
+			for (Map.Entry<String,Integer>entry : codeMoney.entrySet()) {
+                contador = contador + entry.getValue();
+		}return contador;}
     }
-	static class numeroClientes implements Runnable {
+	
+	static class numeroClientes implements Callable<Integer> {
 	    Deque<String> pilaCola = new ConcurrentLinkedDeque<>();
         private int trabajadores;
         private int end = codeMoney.size();
         public numeroClientes( Deque<String> pilaCola) {
             this.pilaCola = pilaCola;
             this.trabajadores=trabajadores;
-        }
-        public void run() {
-            for (int i = 0; i <= end; i++) {
-                 trabajadores+=1;
-            }
-        }
+        } 
+		@Override
+		public Integer call() throws Exception {
+			for (int i = 0; i <= end; i++) {
+                trabajadores+=1;
+		}
+			return trabajadores;
     }
-	
+	}
 	
 	
  public static Map<String,Integer> threadA(String A) {

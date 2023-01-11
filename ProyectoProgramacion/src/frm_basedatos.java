@@ -79,7 +79,7 @@ public class frm_basedatos extends JFrame {
 		JButton btnRegresar = new JButton("Regresar");
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_admin ventana = new frm_admin();
+				VentanaAdmin ventana = new VentanaAdmin();
 				ventana.setVisible(true);
 				dispose();
 			}

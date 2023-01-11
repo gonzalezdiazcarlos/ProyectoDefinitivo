@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
-public class frm_admin extends JFrame {
+public class VentanaAdmin extends JFrame {
 
 	private JPanel contentPane;
 
@@ -19,7 +19,7 @@ public class frm_admin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_admin frame = new frm_admin();
+					VentanaAdmin frame = new VentanaAdmin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,7 +31,7 @@ public class frm_admin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_admin() {
+	public VentanaAdmin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
