@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +18,10 @@ import clases.Administrador;
 import clases.Calzado;
 import clases.Pedidos;
 import clases.Usuario;
+import src.classes.Continent;
+import src.classes.DBException;
+import src.classes.Statistics.ContinentCounter;
+import test.classes.Country;
 
 
 public class MetodosUsuario_sql {
@@ -577,8 +585,62 @@ public int guardarCalzado(String codigo, String nombre, String tipo, int cantida
 		
 	}
 	
+	public static Map<String, Integer> returnMapPedidos (String Nombre) {
+		Connection conexion = null;
+		conexion = ConexionBD.conectar();
+		String sent = "SELECT * FROM pedidos";
+		try(Statement statement = conexion.createStatement()){
+			Map<String,Integer>Pedidos = new HashMap<>();
+			sentencia_preparada = conexion.prepareStatement(sent);
+			ResultSet rs = sentencia_preparada.executeQuery();
+			while( rs.next() ) { // Leer el resultset
+				String Correo = rs.getString("Usuario");
+				String Cantidad = rs.getString("Cantidad");
+				String Precio = rs.getString("Precio");
+				int cant = Integer.parseInt(Cantidad);
+				float pr = Float.parseFloat(Precio);
+				Integer total = Math.round(cant*pr);
+				Pedidos.put (Correo,total);
+			}return Pedidos;
+		}catch(Exception e) {
+			System.out.println(e);
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}return null;	}	}
 	
 	
 	
-
+	
+	public static List<String> biggestOrder(String Nombre) {
+		Connection conexion = null;
+		conexion = ConexionBD.conectar();
+		String sent = "SELECT * FROM pedidos ORDER BY precio DESC LIMIT 5";
+		try(Statement statement = conexion.createStatement()){
+			List<String>Pedido = new ArrayList<>();//5 mayores pedidos
+			sentencia_preparada = conexion.prepareStatement(sent);
+			ResultSet rs = sentencia_preparada.executeQuery();
+			while( rs.next() ) { // Leer el resultset
+				String Correo = rs.getString("Usuario");
+				Pedido.add(Correo);
+			}
+			return Pedido;
+			
+		}catch(Exception e) {
+			System.out.println(e);
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
+			return null;
+		}
+		
+		
+	}
 }
