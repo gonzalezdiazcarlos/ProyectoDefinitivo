@@ -48,7 +48,7 @@ public class Hilo {
 	}
 	
 	
- public static Map<String,Integer> threadA(String A) {
+ public static Map<String,Integer> threadA( ) {
     Deque<String> pilaCola = new ConcurrentLinkedDeque<>();
     Deque<String> pilaCol = new ConcurrentLinkedDeque<>();
 
@@ -64,7 +64,7 @@ public class Hilo {
 
     
 	Map<String,Integer> clientesFact = new HashMap<>();
-    clientesFact.put(A, null);
+    clientesFact.put(null, 0);
     
     if (!pilaCola.isEmpty()) {
         String i = pilaCola.poll();

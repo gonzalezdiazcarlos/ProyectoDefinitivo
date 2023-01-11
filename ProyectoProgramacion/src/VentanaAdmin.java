@@ -73,6 +73,21 @@ public class VentanaAdmin extends JFrame {
 				dispose();
 			}
 		});
+		JButton btnNewButton_x = new JButton("Ver clientes y facturacion");
+		btnNewButton_x.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaFacturacion ventana = new VentanaFacturacion();
+				ventana.setVisible(true);
+				dispose();
+				
+				
+			}
+		});
+		btnNewButton_x.setBounds(172, 209, 89, 23);
+		contentPane.add(btnNewButton_x);
+		
+		
+		
 		btnNewButton_2.setBounds(29, 209, 89, 23);
 		contentPane.add(btnNewButton_2);
 		
