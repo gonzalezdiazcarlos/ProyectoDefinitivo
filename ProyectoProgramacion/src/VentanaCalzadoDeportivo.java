@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class frm_calzadoDeportivo extends JFrame {
+public class VentanaCalzadoDeportivo extends JFrame {
 
 	private JPanel contentPane;
 	public String DatoCorreo;
@@ -30,7 +30,7 @@ public class frm_calzadoDeportivo extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_calzadoDeportivo frame = new frm_calzadoDeportivo();
+					VentanaCalzadoDeportivo frame = new VentanaCalzadoDeportivo();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +42,7 @@ public class frm_calzadoDeportivo extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_calzadoDeportivo() {
+	public VentanaCalzadoDeportivo() {
 		
 		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
 		
@@ -57,7 +57,7 @@ public class frm_calzadoDeportivo extends JFrame {
 		JButton btnCestaCompra = new JButton("Cesta");
 		btnCestaCompra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_cesta ventana = new frm_cesta();
+				VentanaCesta ventana = new VentanaCesta();
 				ventana.setVisible(true);
 				dispose();
 			}
@@ -119,7 +119,7 @@ public class frm_calzadoDeportivo extends JFrame {
 		comboBoxCantidad2.setBounds(433, 226, 51, 22);
 		contentPane.add(comboBoxCantidad2);
 		
-		frm_loginusuario frm = new frm_loginusuario();
+		VentanaLoginusuario frm = new VentanaLoginusuario();
 		DatoCorreo = frm.DatoCorreo;
 		
 		JButton btnCesta1 = new JButton("Añadir a cesta");
@@ -201,7 +201,7 @@ public class frm_calzadoDeportivo extends JFrame {
 		JButton btnNewButton = new JButton("Regresar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_calzadoHombre frm = new frm_calzadoHombre();
+				VentanaCalzadoHombre frm = new VentanaCalzadoHombre();
 				frm.setVisible(true);
 				dispose();
 			}

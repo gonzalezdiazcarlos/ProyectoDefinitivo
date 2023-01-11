@@ -36,7 +36,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 
-public class frm_cesta extends JFrame {
+public class VentanaCesta extends JFrame {
 
 	private JPanel contentPane;
 	public String DatoCorreo;
@@ -52,7 +52,7 @@ public class frm_cesta extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_cesta frame = new frm_cesta();
+					VentanaCesta frame = new VentanaCesta();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -64,7 +64,7 @@ public class frm_cesta extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_cesta() {
+	public VentanaCesta() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
@@ -76,7 +76,7 @@ public class frm_cesta extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		frm_loginusuario frm = new frm_loginusuario();
+		VentanaLoginusuario frm = new VentanaLoginusuario();
 		DatoCorreo = frm.DatoCorreo;
 		
 		JLabel lblTitulo = new JLabel("Bienvenido " + DatoCorreo + " esta es tu cesta de la compra:");

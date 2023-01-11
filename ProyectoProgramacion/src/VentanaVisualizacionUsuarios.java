@@ -21,7 +21,7 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
-public class frm_visualizacionUsuarios extends JFrame {
+public class VentanaVisualizacionUsuarios extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField DireccionFichero;
@@ -33,7 +33,7 @@ public class frm_visualizacionUsuarios extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_visualizacionUsuarios frame = new frm_visualizacionUsuarios();
+					VentanaVisualizacionUsuarios frame = new VentanaVisualizacionUsuarios();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +45,7 @@ public class frm_visualizacionUsuarios extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_visualizacionUsuarios() {
+	public VentanaVisualizacionUsuarios() {
 		
 		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
 		

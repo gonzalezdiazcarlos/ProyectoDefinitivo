@@ -15,7 +15,7 @@ import java.beans.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 
-public class frm_basedatos extends JFrame {
+public class VentanaBasedatos extends JFrame {
 
 	private JPanel contentPane;
 
@@ -26,7 +26,7 @@ public class frm_basedatos extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_basedatos frame = new frm_basedatos();
+					VentanaBasedatos frame = new VentanaBasedatos();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +38,7 @@ public class frm_basedatos extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_basedatos() {
+	public VentanaBasedatos() {
 		
 		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
 		
@@ -53,7 +53,7 @@ public class frm_basedatos extends JFrame {
 		JButton btnNewButton = new JButton("Ver Clientes");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_visualizacionUsuarios ventana = new frm_visualizacionUsuarios();
+				VentanaVisualizacionUsuarios ventana = new VentanaVisualizacionUsuarios();
 				ventana.setVisible(true);
 				dispose();
 				}
@@ -64,7 +64,7 @@ public class frm_basedatos extends JFrame {
 		JButton btnNewButton_1 = new JButton("Ver Administradores");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_visualizacionAdmins ventana = new frm_visualizacionAdmins();
+				VentanaVisualizacionAdmins ventana = new VentanaVisualizacionAdmins();
 				ventana.setVisible(true);
 				dispose();
 			}

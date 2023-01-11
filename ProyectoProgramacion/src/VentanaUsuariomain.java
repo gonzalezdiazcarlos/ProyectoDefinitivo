@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
 
-public class frm_usuariomain extends JFrame {
+public class VentanaUsuariomain extends JFrame {
 
 	private JPanel contentPane;
 
@@ -20,7 +20,7 @@ public class frm_usuariomain extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_usuariomain frame = new frm_usuariomain();
+					VentanaUsuariomain frame = new VentanaUsuariomain();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +32,7 @@ public class frm_usuariomain extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_usuariomain() {
+	public VentanaUsuariomain() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 817, 502);
 		contentPane = new JPanel();
@@ -48,7 +48,7 @@ public class frm_usuariomain extends JFrame {
 		btnHombre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				frm_calzadoHombre ventana = new frm_calzadoHombre();
+				VentanaCalzadoHombre ventana = new VentanaCalzadoHombre();
 				ventana.setVisible(true);
 				dispose();
 				
@@ -62,7 +62,7 @@ public class frm_usuariomain extends JFrame {
 		btnMujer.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		btnMujer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_calzadoMujer ventana = new frm_calzadoMujer();
+				VentanaCalzadoMujer ventana = new VentanaCalzadoMujer();
 				ventana.setVisible(true);
 				dispose();
 			}
@@ -73,7 +73,7 @@ public class frm_usuariomain extends JFrame {
 		JButton btnCestaCompra = new JButton("Cesta");
 		btnCestaCompra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_cesta frm = new frm_cesta();
+				VentanaCesta frm = new VentanaCesta();
 				frm.setVisible(true);
 				dispose();
 			}

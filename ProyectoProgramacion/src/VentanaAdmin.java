@@ -43,7 +43,7 @@ public class VentanaAdmin extends JFrame {
 		JButton btnNewButton = new JButton("Crear Cuenta");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_crearadmin ventana = new frm_crearadmin();
+				VentanaCrearadmin ventana = new VentanaCrearadmin();
 				ventana.setVisible(true);
 				dispose();
 				
@@ -55,7 +55,7 @@ public class VentanaAdmin extends JFrame {
 		JButton btnNewButton_1 = new JButton("BaseDatos");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_basedatos ventana = new frm_basedatos();
+				VentanaBasedatos ventana = new VentanaBasedatos();
 				ventana.setVisible(true);
 				dispose();
 				
@@ -68,7 +68,7 @@ public class VentanaAdmin extends JFrame {
 		JButton btnNewButton_2 = new JButton("Cerrar sesión");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_loginadmin ventana = new frm_loginadmin();
+				VentanaLoginadmin ventana = new VentanaLoginadmin();
 				ventana.setVisible(true);
 				dispose();
 			}

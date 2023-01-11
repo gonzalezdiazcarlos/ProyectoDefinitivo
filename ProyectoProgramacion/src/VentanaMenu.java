@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class frm_menu extends JFrame {
+public class VentanaMenu extends JFrame {
 
 	private JPanel contentPane;
 
@@ -22,7 +22,7 @@ public class frm_menu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_menu frame = new frm_menu();
+					VentanaMenu frame = new VentanaMenu();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class frm_menu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_menu() {
+	public VentanaMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 723, 478);
 		contentPane = new JPanel();
@@ -51,7 +51,7 @@ public class frm_menu extends JFrame {
 		JButton btnNewButton = new JButton("LOGIN");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_loginusuario ventana = new frm_loginusuario ();
+				VentanaLoginusuario ventana = new VentanaLoginusuario ();
 				ventana.setVisible(true);
 				dispose();
 				
@@ -63,7 +63,7 @@ public class frm_menu extends JFrame {
 		JButton btnNewButton_1 = new JButton("CREAR USUARIO");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_crearusuario ventana = new frm_crearusuario();
+				VentanaCrearusuario ventana = new VentanaCrearusuario();
 				ventana.setVisible(true); 
 				dispose();
 			}
@@ -74,7 +74,7 @@ public class frm_menu extends JFrame {
 		JButton btnNewButton_2 = new JButton("Soy admin");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_loginadmin ventana = new frm_loginadmin();
+				VentanaLoginadmin ventana = new VentanaLoginadmin();
 				ventana.setVisible(true);
 				dispose();
 			}

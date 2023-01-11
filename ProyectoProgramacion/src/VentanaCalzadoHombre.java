@@ -9,7 +9,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class frm_calzadoHombre extends JFrame {
+public class VentanaCalzadoHombre extends JFrame {
 
 	private JPanel contentPane;
 
@@ -20,7 +20,7 @@ public class frm_calzadoHombre extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_calzadoHombre frame = new frm_calzadoHombre();
+					VentanaCalzadoHombre frame = new VentanaCalzadoHombre();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +32,7 @@ public class frm_calzadoHombre extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_calzadoHombre() {
+	public VentanaCalzadoHombre() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 817, 502);
 		contentPane = new JPanel();
@@ -51,7 +51,7 @@ public class frm_calzadoHombre extends JFrame {
 		JButton btnDeportivas = new JButton("Deportivas");
 		btnDeportivas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_calzadoDeportivo ventana = new frm_calzadoDeportivo();
+				VentanaCalzadoDeportivo ventana = new VentanaCalzadoDeportivo();
 				ventana.setVisible(true);
 				dispose();
 			}
@@ -63,7 +63,7 @@ public class frm_calzadoHombre extends JFrame {
 		JButton btnCasual = new JButton("Casual");
 		btnCasual.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_calzadoCasual ventana  = new frm_calzadoCasual();
+				VentanaCalzadoCasual ventana  = new VentanaCalzadoCasual();
 				ventana.setVisible(true);
 				dispose();
 			}

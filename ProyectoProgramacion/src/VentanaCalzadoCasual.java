@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class frm_calzadoTacones extends JFrame {
+public class VentanaCalzadoCasual extends JFrame {
 
 	private JPanel contentPane;
 	public String DatoCorreo;
@@ -31,7 +31,7 @@ public class frm_calzadoTacones extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_calzadoTacones frame = new frm_calzadoTacones();
+					VentanaCalzadoCasual frame = new VentanaCalzadoCasual();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class frm_calzadoTacones extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_calzadoTacones() {
+	public VentanaCalzadoCasual() {
 		
 		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
 		
@@ -59,7 +59,7 @@ public class frm_calzadoTacones extends JFrame {
 		JButton btnCestaCompra = new JButton("Cesta");
 		btnCestaCompra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_cesta ventana = new frm_cesta();
+				VentanaCesta ventana = new VentanaCesta();
 				ventana.setVisible(true);
 				dispose();
 				
@@ -68,13 +68,13 @@ public class frm_calzadoTacones extends JFrame {
 		btnCestaCompra.setBounds(690, 11, 103, 47);
 		contentPane.add(btnCestaCompra);
 		
-		frm_loginusuario frm = new frm_loginusuario();
+		VentanaLoginusuario frm = new VentanaLoginusuario();
 		DatoCorreo = frm.DatoCorreo;
 		
 		JButton btnRegresar = new JButton("Regresar");
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_calzadoMujer frm = new frm_calzadoMujer();
+				VentanaCalzadoHombre frm = new VentanaCalzadoHombre();
 				frm.setVisible(true);
 				dispose();
 			}
@@ -90,7 +90,7 @@ public class frm_calzadoTacones extends JFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Tahoma", Font.BOLD, 16));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"35", "36", "37", "38", "39", "40", "41"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"39", "40", "41", "42", "43", "44", "45", "46"}));
 		comboBox.setBounds(109, 276, 51, 22);
 		contentPane.add(comboBox);
 		
@@ -105,7 +105,7 @@ public class frm_calzadoTacones extends JFrame {
 				String Talla = String.valueOf(talla);
 				
 				
-				ArrayList<Calzado>calzado = metodos.getCalzado("Michael Kors");
+				ArrayList<Calzado>calzado = metodos.getCalzado("Bratton Lace");
 				for(Calzado c : calzado) {
 					String Codigo = c.getCodigo();
 					String Nombre = c.getNombre();
@@ -135,7 +135,7 @@ public class frm_calzadoTacones extends JFrame {
 		lblPrecio.setBounds(52, 230, 77, 23);
 		contentPane.add(lblPrecio);
 		
-		JLabel lblNombreZapato = new JLabel("Michael Kors");
+		JLabel lblNombreZapato = new JLabel("Bratton Lace");
 		lblNombreZapato.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNombreZapato.setBounds(53, 15, 141, 31);
 		contentPane.add(lblNombreZapato);
@@ -151,7 +151,7 @@ public class frm_calzadoTacones extends JFrame {
 		lblCantidad.setBounds(53, 309, 97, 23);
 		contentPane.add(lblCantidad);
 		
-		JLabel lblHanfordLauren = new JLabel("Jimmy Choo");
+		JLabel lblHanfordLauren = new JLabel("Hanford Lauren");
 		lblHanfordLauren.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblHanfordLauren.setBounds(349, 15, 186, 31);
 		contentPane.add(lblHanfordLauren);
@@ -168,7 +168,7 @@ public class frm_calzadoTacones extends JFrame {
 		contentPane.add(lblTalla_1);
 		
 		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"35", "36", "37", "38", "39", "40", "41"}));
+		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"39", "40", "41", "42", "43", "44", "45", "46"}));
 		comboBox_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		comboBox_2.setBounds(405, 276, 51, 22);
 		contentPane.add(comboBox_2);
@@ -195,7 +195,7 @@ public class frm_calzadoTacones extends JFrame {
 				String Talla = String.valueOf(talla);
 				
 				
-				ArrayList<Calzado>calzado = metodos.getCalzado("Jimmy Choo");
+				ArrayList<Calzado>calzado = metodos.getCalzado("Hanford Lauren");
 				for(Calzado c : calzado) {
 					String Codigo = c.getCodigo();
 					String Nombre = c.getNombre();

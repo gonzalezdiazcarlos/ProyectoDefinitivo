@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class frm_loginusuario extends JFrame {
+public class VentanaLoginusuario extends JFrame {
 
 	private JPanel contentPane;
 	private JPasswordField txtContraseña;
@@ -28,7 +28,7 @@ public class frm_loginusuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_loginusuario frame = new frm_loginusuario();
+					VentanaLoginusuario frame = new VentanaLoginusuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +40,7 @@ public class frm_loginusuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_loginusuario() {
+	public VentanaLoginusuario() {
 		
 		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
 		
@@ -74,7 +74,7 @@ public class frm_loginusuario extends JFrame {
 					String busqueda_nombre = metodos.buscarNombre(txtCorreo.getText());
 					JOptionPane.showMessageDialog(null, "Bienvenido "  + busqueda_nombre);
 					DatoCorreo = txtCorreo.getText();
-					frm_usuariomain ventana = new frm_usuariomain();
+					VentanaUsuariomain ventana = new VentanaUsuariomain();
 					ventana.setVisible(true);
 					dispose();
 				}else {
@@ -88,7 +88,7 @@ public class frm_loginusuario extends JFrame {
 		JButton btnRegresar = new JButton("REGRESAR");
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_menu ventana = new frm_menu ();
+				VentanaMenu ventana = new VentanaMenu ();
 				ventana.setVisible(true);
 				dispose();
 

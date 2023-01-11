@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
-public class frm_crearadmin extends JFrame {
+public class VentanaCrearadmin extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textCodigo;
@@ -29,7 +29,7 @@ public class frm_crearadmin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_crearadmin frame = new frm_crearadmin();
+					VentanaCrearadmin frame = new VentanaCrearadmin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class frm_crearadmin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_crearadmin() {
+	public VentanaCrearadmin() {
 		
 		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
 		
@@ -99,7 +99,7 @@ public class frm_crearadmin extends JFrame {
 		btnNewButton_1 = new JButton("Regresar");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_menu ventana = new frm_menu();
+				VentanaMenu ventana = new VentanaMenu();
 				ventana.setVisible(true);
 				dispose();
 				

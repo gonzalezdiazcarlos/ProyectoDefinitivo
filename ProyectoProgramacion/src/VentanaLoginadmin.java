@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class frm_loginadmin extends JFrame {
+public class VentanaLoginadmin extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtCODIGO;
@@ -27,7 +27,7 @@ public class frm_loginadmin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_loginadmin frame = new frm_loginadmin();
+					VentanaLoginadmin frame = new VentanaLoginadmin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class frm_loginadmin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_loginadmin() {
+	public VentanaLoginadmin() {
 		
 		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
 		
@@ -94,7 +94,7 @@ public class frm_loginadmin extends JFrame {
 		JButton btnNewButton_1 = new JButton("REGRESAR");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_menu ventana = new frm_menu();
+				VentanaMenu ventana = new VentanaMenu();
 				ventana.setVisible(true);
 				dispose();
 			}

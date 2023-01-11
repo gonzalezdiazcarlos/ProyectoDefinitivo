@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 
-public class frm_crearusuario extends JFrame {
+public class VentanaCrearusuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNombre;
@@ -31,7 +31,7 @@ public class frm_crearusuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm_crearusuario frame = new frm_crearusuario();
+					VentanaCrearusuario frame = new VentanaCrearusuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class frm_crearusuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm_crearusuario() {
+	public VentanaCrearusuario() {
 		
 		MetodosUsuario_sql metodos = new MetodosUsuario_sql();
 		
@@ -115,7 +115,7 @@ public class frm_crearusuario extends JFrame {
 		JButton btnRegresar = new JButton("Regresar");
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frm_menu ventana = new frm_menu ();
+				VentanaMenu ventana = new VentanaMenu ();
 				ventana.setVisible(true);
 				dispose();
 			}
