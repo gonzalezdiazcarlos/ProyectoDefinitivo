@@ -4,14 +4,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Utilidades.Newsletter;
 import basesdedatos.MetodosUsuario_sql;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.mail.MessagingException;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class frm_crearusuario extends JFrame {
@@ -90,6 +93,16 @@ public class frm_crearusuario extends JFrame {
 				
 				if( i > 0 ) {
 					JOptionPane.showMessageDialog(null, "Datos guardados correctamente");
+					Newsletter newsletter = null;
+					try {
+						newsletter = new Newsletter("proyectodefinitivoprogram@gmail.com");
+					} catch (IOException e2) {
+						e2.printStackTrace();
+					}
+					try {newsletter.signUpMail(txtCorreo.getText());
+					} catch (MessagingException e1) {
+						e1.printStackTrace();
+					}
 				}else {
 					JOptionPane.showMessageDialog(null,"no se pudo guardar los datos");
 				}
