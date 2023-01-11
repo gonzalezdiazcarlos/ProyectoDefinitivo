@@ -49,6 +49,13 @@ public class frm_calzadoMujer extends JFrame {
 		contentPane.add(btnCestaCompra);
 		
 		JButton btnRegresar = new JButton("Regresar");
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frm_usuariomain frm = new frm_usuariomain();
+				frm.setVisible(true);
+				dispose();
+			}
+		});
 		btnRegresar.setBounds(690, 434, 103, 20);
 		contentPane.add(btnRegresar);
 		

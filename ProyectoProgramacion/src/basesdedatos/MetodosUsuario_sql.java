@@ -577,6 +577,65 @@ public int guardarCalzado(String codigo, String nombre, String tipo, int cantida
 		
 	}
 	
+	public static ArrayList<Administrador> ordenarAdmin(){
+		Connection conexion = null;
+		conexion = ConexionBD.conectar();
+		try(Statement statement = conexion.createStatement()){
+			ArrayList<Administrador>admins = new ArrayList<>();
+			String sent = "SELECT * FROM administrador ORDER BY CODIGO ASC";
+			ResultSet rs = statement.executeQuery( sent );
+			while( rs.next() ) { 
+				String codigo = rs.getString("CODIGO");
+				String nombre = rs.getString("NOMBRE");
+				String contraseña = rs.getString("CONTRASEÑA");
+				admins.add( new Administrador (codigo , nombre, contraseña));
+				
+			}
+			return admins ;
+			
+		}catch(Exception e) {
+			System.out.println(e);
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
+			return null;
+		}
+		}
+		
+		public static ArrayList<Usuario> ordenarUsuarios() {
+			Connection conexion = null;
+			conexion = ConexionBD.conectar();
+			try(Statement statement = conexion.createStatement()){
+				ArrayList<Usuario>usuarios = new ArrayList<>();
+				String sent = "SELECT * FROM usuario ORDER BY NOMBRE ASC";
+				ResultSet rs = statement.executeQuery( sent );
+				while( rs.next() ) { 
+					String nombre = rs.getString("NOMBRE");
+					String correo = rs.getString("CORREO");
+					String contraseña = rs.getString("CONTRASEÑA");
+					usuarios.add( new Usuario ( nombre, correo, contraseña));
+					
+				}
+				return usuarios;
+				
+			}catch(Exception e) {
+				System.out.println(e);
+				Logger logger = Logger.getLogger("My Logger");
+				logger.log(Level.ALL, "Error al buscar");
+				try {
+					logger.addHandler(new FileHandler("Logger.txt",true)); 
+				}catch (Exception e1) {
+					logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+				}
+				return null;
+		
+			}
+	}
+	
 	
 	
 	

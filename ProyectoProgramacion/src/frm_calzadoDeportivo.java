@@ -197,5 +197,16 @@ public class frm_calzadoDeportivo extends JFrame {
 		lblPrecio_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblPrecio_1.setBounds(343, 150, 49, 25);
 		contentPane.add(lblPrecio_1);
+		
+		JButton btnNewButton = new JButton("Regresar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frm_calzadoHombre frm = new frm_calzadoHombre();
+				frm.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton.setBounds(704, 420, 89, 23);
+		contentPane.add(btnNewButton);
 	}
 }

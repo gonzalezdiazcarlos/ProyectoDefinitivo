@@ -48,10 +48,6 @@ public class frm_calzadoHombre extends JFrame {
 		btnCestaCompra.setBounds(690, 11, 103, 47);
 		contentPane.add(btnCestaCompra);
 		
-		JButton btnRegresar = new JButton("Regresar");
-		btnRegresar.setBounds(690, 434, 103, 20);
-		contentPane.add(btnRegresar);
-		
 		JButton btnDeportivas = new JButton("Deportivas");
 		btnDeportivas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

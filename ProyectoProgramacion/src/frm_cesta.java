@@ -1,8 +1,12 @@
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.util.logging.Logger;
 
 import basesdedatos.MetodosUsuario_sql;
 import clases.Pedidos;
@@ -14,15 +18,27 @@ import java.util.ArrayList;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.ListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 
 public class frm_cesta extends JFrame {
 
 	private JPanel contentPane;
 	public String DatoCorreo;
+	private JTextField textField;
+	private DefaultListCellRenderer cellRenderer;
+	private JTextField textField_1;
+	private JLabel infoLabel;
 
 	/**
 	 * Launch the application.
@@ -69,6 +85,9 @@ public class frm_cesta extends JFrame {
 		list.setBounds(20, 89, 589, 252);
 		list.setModel(modelo);
 		contentPane.add(list);
+		
+		infoLabel = new JLabel();
+		add(infoLabel, BorderLayout.SOUTH);
 		
 		ArrayList<Pedidos> Pedidos = metodos.getPedidos(DatoCorreo);
 		modelo.clear();
@@ -169,6 +188,89 @@ public class frm_cesta extends JFrame {
 		btnComprar.setBounds(520, 352, 89, 34);
 		contentPane.add(btnComprar);
 		
+		cellRenderer = new DefaultListCellRenderer() {
+			private static final long serialVersionUID = 1L;
+			public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,boolean cellHasFocus) {
+				JLabel l = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+				String tipo = (String) list.getModel().getElementAt(index);
+				CharSequence searchStr = null;
+				if (searchStr != null && !searchStr.isEmpty() && tipo.contains(searchStr)) {
+					l.setOpaque(true);
+					l.setBackground(new Color(255, 200, 200));
+				} else {
+					this.setOpaque(false);
+				}
+				return l;
+			}
+		};
+		list.setCellRenderer(cellRenderer);
+		
+		addRightPanel();
+		
+		setSize(800, 600);
+		setVisible(true);
+
+			
+		
+	}
+	
+	
+	
+	
+	private void addRightPanel() {
+		
+		JLabel lblNewLabel = new JLabel("Seleccionar zapato por:");
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+		
+		panel.add(lblNewLabel);
+		panel.add(textField_1);
+		
+		JButton btnNewButton = new JButton("Marcar");
+		panel.add(btnNewButton);
+		
+		btnNewButton.addActionListener(new ActionListener() {
+		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<Pedidos> Pedidos = MetodosUsuario_sql.getPedidos(DatoCorreo);
+			
+			}
+				
+			
+		});
+			
+		JPanel rightPanel = new JPanel();
+		rightPanel.add(panel);
+		
+		add(rightPanel, BorderLayout.EAST);
+		
+		textField_1.getDocument().addDocumentListener(new DocumentListener() {
+			
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				//selectRows(textField_1.getText());
+				repaint();
+				
+			}
+			
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				//selectRows(textField_1.getText());
+				repaint();
+			}
+			
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				//selectRows(textField_1.getText());
+				repaint();
+			}
+		});
+		
+	
 		
 	}
 }

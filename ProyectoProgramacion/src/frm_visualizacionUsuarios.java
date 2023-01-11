@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
@@ -152,6 +153,25 @@ public class frm_visualizacionUsuarios extends JFrame {
 		DireccionFichero.setBounds(10, 352, 368, 20);
 		contentPane.add(DireccionFichero);
 		DireccionFichero.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Ordenar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				sortUsuarios(listaClientes);
+			}
+			private void sortUsuarios(JList listaClientes) {
+				List<Usuario> usuarios = MetodosUsuario_sql.ordenarUsuarios();
+				 DefaultListModel model = (DefaultListModel)listaClientes.getModel();
+				  model.clear();
+				  for (Usuario usuario : usuarios) {
+				    model.addElement(usuario);
+				    
+				  }
+
+			}
+		});
+		btnNewButton.setBounds(649, 55, 89, 23);
+		contentPane.add(btnNewButton);
 		
 	}
 }

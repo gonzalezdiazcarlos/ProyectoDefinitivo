@@ -73,6 +73,9 @@ public class frm_usuariomain extends JFrame {
 		JButton btnCestaCompra = new JButton("Cesta");
 		btnCestaCompra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frm_cesta frm = new frm_cesta();
+				frm.setVisible(true);
+				dispose();
 			}
 		});
 		btnCestaCompra.setBounds(690, 11, 103, 47);

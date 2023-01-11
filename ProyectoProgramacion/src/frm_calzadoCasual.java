@@ -72,6 +72,13 @@ public class frm_calzadoCasual extends JFrame {
 		DatoCorreo = frm.DatoCorreo;
 		
 		JButton btnRegresar = new JButton("Regresar");
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frm_calzadoHombre frm = new frm_calzadoHombre();
+				frm.setVisible(true);
+				dispose();
+			}
+		});
 		btnRegresar.setBounds(690, 431, 103, 23);
 		contentPane.add(btnRegresar);
 		

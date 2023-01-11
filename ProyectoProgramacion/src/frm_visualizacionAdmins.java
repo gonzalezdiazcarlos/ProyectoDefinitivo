@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
@@ -153,5 +154,25 @@ public class frm_visualizacionAdmins extends JFrame {
 		});
 		btnMostrarFichero.setBounds(247, 408, 122, 23);
 		contentPane.add(btnMostrarFichero);
+		
+		JButton btnNewButton = new JButton("Ordenar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				sortAdmins(ListaAdmins);
+			}
+			
+			private void sortAdmins(JList ListaAdmins) {
+				List<Administrador> admins = MetodosUsuario_sql.ordenarAdmin();
+				 DefaultListModel model = (DefaultListModel)ListaAdmins.getModel();
+				  model.clear();
+				  for (Administrador admin : admins) {
+				    model.addElement(admin);
+				    
+				  }
+				  
+			}
+		});
+		btnNewButton.setBounds(611, 53, 89, 23);
+		contentPane.add(btnNewButton);
 	}
 }
