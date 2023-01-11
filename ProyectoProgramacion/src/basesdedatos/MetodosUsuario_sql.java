@@ -585,7 +585,7 @@ public int guardarCalzado(String codigo, String nombre, String tipo, int cantida
 		
 	}
 	
-	public static Map<String, Integer> returnMapPedidos (String Nombre) {
+	public static Map<String, Integer> returnMapPedidos () {
 		Connection conexion = null;
 		conexion = ConexionBD.conectar();
 		String sent = "SELECT * FROM pedidos";
@@ -599,8 +599,8 @@ public int guardarCalzado(String codigo, String nombre, String tipo, int cantida
 				String Precio = rs.getString("Precio");
 				int cant = Integer.parseInt(Cantidad);
 				float pr = Float.parseFloat(Precio);
-				Integer total = Math.round(cant*pr);
-				Pedidos.put (Correo,total);
+				
+				Pedidos.put (Correo,Math.round(cant*pr));
 			}return Pedidos;
 		}catch(Exception e) {
 			System.out.println(e);
@@ -615,7 +615,7 @@ public int guardarCalzado(String codigo, String nombre, String tipo, int cantida
 	
 	
 	
-	public static List<String> biggestOrder(String Nombre) {
+	public static List<String> biggestOrder() {//se envia correo a los 5 mayores pedidos
 		Connection conexion = null;
 		conexion = ConexionBD.conectar();
 		String sent = "SELECT * FROM pedidos ORDER BY precio DESC LIMIT 5";
