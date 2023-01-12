@@ -13,6 +13,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import Utilidades.*;
 public class Newsletter {
 
 		
@@ -23,7 +24,7 @@ public class Newsletter {
 	Properties p = new Properties();
 		
 		
-	public Newsletter(String correoEnvio) throws IOException {
+	public Newsletter(String correoEnvio) throws UtilExceptions, IOException {
 			this.propiedades = new Properties();
 			loadConfig(correoEnvio);
 			checkConfg();

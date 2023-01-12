@@ -14,6 +14,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import Utilidades.UtilExceptions;
 import clases.Administrador;
 import clases.Calzado;
 import clases.Pedidos;
@@ -642,7 +643,7 @@ public int guardarCalzado(String codigo, String nombre, String tipo, int cantida
 	}
 	
 
-	public static Map<String, Integer> returnMapPedidos () {
+	public static Map<String, Integer> returnMapPedidos ()  {
 		Connection conexion = null;
 		conexion = ConexionBD.conectar();
 		String sent = "SELECT * FROM pedidos";
@@ -658,7 +659,9 @@ public int guardarCalzado(String codigo, String nombre, String tipo, int cantida
 				float pr = Float.parseFloat(Precio);
 				
 				Pedidos.put (Correo,Math.round(cant*pr));
-			}return Pedidos;
+				
+			}
+			return Pedidos;
 		}catch(Exception e) {
 			System.out.println(e);
 			Logger logger = Logger.getLogger("My Logger");
@@ -673,7 +676,7 @@ public int guardarCalzado(String codigo, String nombre, String tipo, int cantida
 	
 	
 	
-	public static List<String> biggestOrder() {//se envia correo a los 5 mayores pedidos
+	public static List<String> biggestOrder()throws UtilExceptions {//se envia correo a los 5 mayores pedidos
 		Connection conexion = null;
 		conexion = ConexionBD.conectar();
 		String sent = "SELECT * FROM pedidos ORDER BY precio DESC LIMIT 5";
@@ -685,6 +688,7 @@ public int guardarCalzado(String codigo, String nombre, String tipo, int cantida
 				String Correo = rs.getString("Usuario");
 				Pedido.add(Correo);
 			}
+			if(Pedido==null) { throw new UtilExceptions("El pedido va vacio."); }
 			return Pedido;
 			
 		}catch(Exception e) {

@@ -49,7 +49,7 @@ public class Hilo {
 	}
 	
 	
- public static Map<String,Integer> threadA( ) {
+ public static Map<String,Integer> threadA( )throws UtilExceptions {
     Deque<String> pilaCola = new ConcurrentLinkedDeque<>();
     Deque<String> pilaCol = new ConcurrentLinkedDeque<>();
 
@@ -72,6 +72,7 @@ public class Hilo {
         counter += 1;
         
     }int numeroClientes = counter;
+    if(numeroClientes==0) {throw new UtilExceptions("Parece que no has vendido nada",null,true ,true );}
 	return clientesFact;
     
     
