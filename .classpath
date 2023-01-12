@@ -7,8 +7,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Alumno/Downloads/sqlite-jdbc-3.39.3.0 (3).jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/Users/Alumno/OneDrive - Universidad de Deusto/Escritorio/JUAN/3º ADE+Ing.Informática/1er 4trimestre/PROGRAMACIÓN III/javax.mail.jar"/>
+	<classpathentry kind="lib" path="lib/javax.mail.jar"/>
+	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.39.4.0 (1).jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
