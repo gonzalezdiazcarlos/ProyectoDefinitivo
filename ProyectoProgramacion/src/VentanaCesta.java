@@ -178,7 +178,7 @@ public class VentanaCesta extends JFrame {
 						int Cantidad = Integer.parseInt(p.getCantidad());
 						int Precio = Integer.parseInt(p.getPrecio());
 						PrecioTotal = PrecioTotal + Cantidad*Precio;
-					}/*Newsletter newsletter=null;
+					}Newsletter newsletter=null;
 					try {
 						newsletter = new Newsletter("proyectodefinitivoprogram@gmail.com");
 					} catch (IOException e2) {
@@ -187,7 +187,7 @@ public class VentanaCesta extends JFrame {
 				try {	newsletter.biggestOrderSendMail(MetodosUsuario_sql.biggestOrder());
 				}catch (MessagingException e1) {
 					e1.printStackTrace();
-				}*/
+				}
 					
 				}else {
 					JOptionPane.showMessageDialog(null, "La cesta esta vacia");

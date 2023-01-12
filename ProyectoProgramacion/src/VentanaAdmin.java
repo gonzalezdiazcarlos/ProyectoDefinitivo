@@ -73,7 +73,7 @@ public class VentanaAdmin extends JFrame {
 				dispose();
 			}
 		});
-		/*JButton btnNewButton_x = new JButton("Ver clientes y facturacion");
+		JButton btnNewButton_x = new JButton("Ver clientes y facturacion");
 		btnNewButton_x.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaFacturacion ventana = new VentanaFacturacion();
@@ -84,7 +84,7 @@ public class VentanaAdmin extends JFrame {
 			}
 		});
 		btnNewButton_x.setBounds(172, 209, 89, 23);
-		contentPane.add(btnNewButton_x);*/
+		contentPane.add(btnNewButton_x);
 		
 		
 		

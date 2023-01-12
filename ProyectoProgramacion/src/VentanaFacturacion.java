@@ -31,8 +31,9 @@ public class VentanaFacturacion extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws  
 	 */
-	public VentanaFacturacion() {
+	public VentanaFacturacion()  {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -42,10 +43,16 @@ public class VentanaFacturacion extends JFrame {
 		contentPane.setLayout(null);
 		
 		
-		JLabel labelFact = new JLabel(Hilo.threadA().toString());
-		labelFact.setFont(new Font("Tahoma", Font.BOLD, 20));
-		labelFact.setBounds(50, 50, 200, 350);
-		contentPane.add(labelFact);
+		JLabel labelFact;
+		try {
+			labelFact = new JLabel(Hilo.threadA().toString());
+			labelFact.setFont(new Font("Tahoma", Font.BOLD, 20));
+			labelFact.setBounds(50, 50, 200, 350);
+			contentPane.add(labelFact);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
 		
 		
 		
