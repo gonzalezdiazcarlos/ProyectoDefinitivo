@@ -8,6 +8,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import Utilidades.Newsletter;
+import Utilidades.UtilExceptions;
 
 import java.util.logging.Logger;
 
@@ -181,11 +182,11 @@ public class VentanaCesta extends JFrame {
 					}Newsletter newsletter=null;
 					try {
 						newsletter = new Newsletter("proyectodefinitivoprogram@gmail.com");
-					} catch (IOException e2) {
+					} catch (IOException | UtilExceptions e2) {
 						e2.printStackTrace();
 					}
 				try {	newsletter.biggestOrderSendMail(MetodosUsuario_sql.biggestOrder());
-				}catch (MessagingException e1) {
+				}catch (MessagingException | UtilExceptions e1) {
 					e1.printStackTrace();
 				}
 					

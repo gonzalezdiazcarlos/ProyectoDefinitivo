@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Utilidades.Newsletter;
+import Utilidades.UtilExceptions;
 import basesdedatos.MetodosUsuario_sql;
 
 import javax.swing.JLabel;
@@ -96,7 +97,7 @@ public class VentanaCrearusuario extends JFrame {
 				    Newsletter newsletter = null;
 					try {
 						newsletter = new Newsletter("proyectodefinitivoprogram@gmail.com");
-					} catch (IOException e2) {
+					} catch (IOException | UtilExceptions e2) {
 						e2.printStackTrace();
 					}
 					try {newsletter.signUpMail(txtCorreo.getText());
