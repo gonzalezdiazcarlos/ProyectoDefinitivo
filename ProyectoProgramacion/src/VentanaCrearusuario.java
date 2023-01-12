@@ -93,7 +93,7 @@ public class VentanaCrearusuario extends JFrame {
 				
 				if( i > 0 ) {
 					JOptionPane.showMessageDialog(null, "Datos guardados correctamente");
-					Newsletter newsletter = null;
+					/*Newsletter newsletter = null;
 					try {
 						newsletter = new Newsletter("proyectodefinitivoprogram@gmail.com");
 					} catch (IOException e2) {
@@ -102,7 +102,7 @@ public class VentanaCrearusuario extends JFrame {
 					try {newsletter.signUpMail(txtCorreo.getText());
 					} catch (MessagingException e1) {
 						e1.printStackTrace();
-					}
+					}*/
 				}else {
 					JOptionPane.showMessageDialog(null,"no se pudo guardar los datos");
 				}
