@@ -9,6 +9,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import clases.*;
 import basesdedatos.*;
+import Utilidades.*;
 
 public class Hilo {
 	static int counter=0;
