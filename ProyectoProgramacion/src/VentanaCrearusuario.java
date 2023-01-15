@@ -90,15 +90,18 @@ public class VentanaCrearusuario extends JFrame {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				int i = metodos.guardar(txtNombre.getText(),txtCorreo.getText(),txtContraseña.getText());
+				metodos.guardar(txtNombre.getText(),txtCorreo.getText(),txtContraseña.getText());
+
+				try {Newsletter.signUpMail(txtCorreo.getText());
+				} catch (MessagingException e1) {
+					e1.printStackTrace();
+				}
+				int i = MetodosUsuario_sql.getUsuarios().size();
 				
 				if( i > 0 ) {
 					JOptionPane.showMessageDialog(null, "Datos guardados correctamente");
 					
-					try {Newsletter.signUpMail(txtCorreo.getText());
-					} catch (MessagingException e1) {
-						e1.printStackTrace();
-					}
+					
 				}else {
 					JOptionPane.showMessageDialog(null,"no se pudo guardar los datos");
 				}

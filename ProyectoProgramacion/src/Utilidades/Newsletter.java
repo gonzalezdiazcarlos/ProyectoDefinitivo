@@ -17,18 +17,19 @@ import Utilidades.*;
 public class Newsletter {
 	
 		static String remitente="proyectodefinitivoprogram@gmail.com";
-		static String claveemail= "vpyiikrjmyanfzef";
+		static String claveemail= "fiktyurwaxtknfcb";
 		
 		public static void sendMail(String destinatario, String asunto,String cuerpo) throws MessagingException{
 		Properties props = System.getProperties();
+	    props.put("mail.smtp.auth", "true");   
+	    props.put("mail.smtp.starttls.enable", "true"); 
 	    props.put("mail.smtp.host", "smtp.gmail.com");  
 	    props.put("mail.smtp.user", remitente);
 	    props.put("mail.smtp.clave", claveemail);    
-	    props.put("mail.smtp.auth", "true");    
-	    props.put("mail.smtp.starttls.enable", "true"); 
 	    props.put("mail.smtp.port", "587"); 
 
 	    Session session = Session.getDefaultInstance(props);
+	    //session.setDebug(true);
 	    MimeMessage message = new MimeMessage(session);
 
 	    try {
