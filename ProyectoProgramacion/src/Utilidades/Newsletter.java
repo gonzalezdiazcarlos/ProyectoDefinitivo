@@ -15,16 +15,96 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import Utilidades.*;
 public class Newsletter {
+	
+		static String remitente="proyectodefinitivoprogram@gmail.com";
+		static String claveemail= "vpyiikrjmyanfzef";
+		
+		public static void sendMail(String destinatario, String asunto,String cuerpo) throws MessagingException{
+		Properties props = System.getProperties();
+	    props.put("mail.smtp.host", "smtp.gmail.com");  
+	    props.put("mail.smtp.user", remitente);
+	    props.put("mail.smtp.clave", claveemail);    
+	    props.put("mail.smtp.auth", "true");    
+	    props.put("mail.smtp.starttls.enable", "true"); 
+	    props.put("mail.smtp.port", "587"); 
+
+	    Session session = Session.getDefaultInstance(props);
+	    MimeMessage message = new MimeMessage(session);
+
+	    try {
+	        message.setFrom(new InternetAddress(remitente));
+	        message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));    
+	        message.setSubject(asunto);
+	        message.setText(cuerpo);
+	        Transport transport = session.getTransport("smtp");
+	        transport.connect("smtp.gmail.com", remitente, claveemail);
+	        transport.sendMessage(message, message.getAllRecipients());
+	        transport.close();
+	    }
+	    catch (MessagingException me) {
+	        me.printStackTrace();   
+	    }
+	  }
+		
+		
+		 public  static void signUpMail(String correo) throws MessagingException {
+		    	sendMail(correo,"Registro","Bienvenido al  grupo \nEstamos muy contentos de que hayas decidido registarte con nosotros.\nUn saludo");
+		    }
+		
+		
+		 public static void biggestOrderSendMail(List<String> lista) throws MessagingException{
+			   for(String correo : lista) {
+			   sendMail(correo,"Dar las gracias","Muchas gracias por confiar en nosotros, \nEsperamos volver a vernos pronto\n Un saludo"); }	
+	}
+		
+		
+		
+}
+
+/*Properties props = System.getProperties();
+	    props.put("mail.smtp.host", "smtp.gmail.com");  
+	    props.put("mail.smtp.user", remitente);
+	    props.put("mail.smtp.clave", claveemail);    
+	    props.put("mail.smtp.auth", "true");    
+	    props.put("mail.smtp.starttls.enable", "true"); 
+	    props.put("mail.smtp.port", "587"); 
+
+	    Session session = Session.getDefaultInstance(props);
+	    MimeMessage message = new MimeMessage(session);
+
+	    try {
+	        message.setFrom(new InternetAddress(remitente));
+	        message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));    
+	        message.setSubject(asunto);
+	        message.setText(cuerpo);
+	        Transport transport = session.getTransport("smtp");
+	        transport.connect("smtp.gmail.com", remitente, claveemail);
+	        transport.sendMessage(message, message.getAllRecipients());
+	        transport.close();
+	    }
+	    catch (MessagingException me) {
+	        me.printStackTrace();   
+	    }*/
+
+
+	
 
 		
-	private Properties propiedades;
-	private  Session sesion;
-		
-
-	Properties p = new Properties();
 		
 		
-	public Newsletter(String correoEnvio) throws UtilExceptions, IOException {
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
 			this.propiedades = new Properties();
 			loadConfig(correoEnvio);
 			checkConfg();
@@ -76,5 +156,5 @@ public class Newsletter {
    public void biggestOrderSendMail(List<String> lista) throws MessagingException{
 	   for(String correo : lista) {
 	   sendMail("Dar las gracias","Muchas gracias por confiar en nosotros, \nEsperamos volver a vernos pronto\n Un saludo",correo);
-   }}
-}
+   }*/
+
