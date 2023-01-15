@@ -79,7 +79,7 @@ public class VentanaLoginadmin extends JFrame {
 				
 				if(busqueda_usuario.equals("usuario encontrado")) {
 					String busqueda_nombre = metodos.buscarNombreAdmin(txtCODIGO.getText());
-					JOptionPane.showMessageDialog(null, "Bienvenido" + busqueda_nombre);
+					JOptionPane.showMessageDialog(null, "Bienvenido " + busqueda_nombre);
 					VentanaAdmin ventana = new VentanaAdmin();
 					ventana.setVisible(true);
 					dispose();

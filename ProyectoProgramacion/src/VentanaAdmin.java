@@ -83,7 +83,7 @@ public class VentanaAdmin extends JFrame {
 				
 			}
 		});
-		btnNewButton_x.setBounds(172, 209, 89, 23);
+		btnNewButton_x.setBounds(130, 150, 350, 23);
 		contentPane.add(btnNewButton_x);
 		
 		

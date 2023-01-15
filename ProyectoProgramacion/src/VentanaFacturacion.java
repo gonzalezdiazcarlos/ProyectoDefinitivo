@@ -1,6 +1,8 @@
 import java.awt.EventQueue;
 import java.awt.Font;
 import Utilidades.*;
+import basesdedatos.MetodosUsuario_sql;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -45,7 +47,11 @@ public class VentanaFacturacion extends JFrame {
 		
 		JLabel labelFact;
 		try {
-			labelFact = new JLabel(Hilo.threadA().toString());
+			labelFact = new JLabel("Clientes,  Facturacion");
+			labelFact.setFont(new Font("Tahoma", Font.BOLD, 15));
+			labelFact.setBounds(20, 20, 200, 350);
+			contentPane.add(labelFact);
+			labelFact = new JLabel(MetodosUsuario_sql.fact().toString());
 			labelFact.setFont(new Font("Tahoma", Font.BOLD, 20));
 			labelFact.setBounds(50, 50, 200, 350);
 			contentPane.add(labelFact);

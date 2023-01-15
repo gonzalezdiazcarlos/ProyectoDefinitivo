@@ -679,7 +679,8 @@ public int guardarCalzado(String codigo, String nombre, String tipo, int cantida
 	public static List<String> biggestOrder()throws UtilExceptions {//se envia correo a los 5 mayores pedidos
 		Connection conexion = null;
 		conexion = ConexionBD.conectar();
-		String sent = "SELECT * FROM pedidos ORDER BY precio DESC LIMIT 5";
+		
+		String sent = "SELECT * FROM pedidos ORDER BY precio*cantidad DESC LIMIT 5";
 		try(Statement statement = conexion.createStatement()){
 			List<String>Pedido = new ArrayList<>();//5 mayores pedidos
 			sentencia_preparada = conexion.prepareStatement(sent);
@@ -702,7 +703,35 @@ public int guardarCalzado(String codigo, String nombre, String tipo, int cantida
 			}
 			return null;
 		}
-		
-		
 	}
+	
+	public static Map<Integer,Integer> fact(){
+		Connection conexion = null;
+		int fact=0;
+		conexion = ConexionBD.conectar();
+		int dinero = 0, clientes = 0;
+		try(Statement statement = conexion.createStatement()){
+			Map<Integer,Integer>todo = new HashMap<>();//5 mayores pedidos
+			String sent = "SELECT precio*cantidad AS money,COUNT(DISTINCT codigo) AS clientes FROM pedidos";
+			ResultSet rs = statement.executeQuery( sent );
+			while( rs.next() ) { 
+				 dinero = rs.getInt("MONEY");
+				 clientes= rs.getInt("clientes");
+				fact=fact+dinero;
+			}
+			todo.put(clientes,fact);
+			return todo ;
+			
+		}catch(Exception e) {
+			System.out.println(e);
+			Logger logger = Logger.getLogger("My Logger");
+			logger.log(Level.ALL, "Error al buscar");
+			try {
+				logger.addHandler(new FileHandler("Logger.txt",true)); 
+			}catch (Exception e1) {
+				logger.log(Level.SEVERE, "No se pudo crear el fichero",e1);
+			}
+			return null;
+		}
+		}
 }
