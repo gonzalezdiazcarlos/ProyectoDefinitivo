@@ -73,7 +73,7 @@ public class VentanaUsuariomain extends JFrame {
 		JButton btnCestaCompra = new JButton("Cesta");
 		btnCestaCompra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaCesta frm = new VentanaCesta();
+				VentanaCestaCompra frm = new VentanaCestaCompra();
 				frm.setVisible(true);
 				dispose();
 			}

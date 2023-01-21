@@ -127,13 +127,14 @@ public class VentanaVisualizacionUsuarios extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList <Usuario> usuarios = metodos.getUsuarios();
 				if(usuarios!=null) {
-						try(FileWriter writer = new FileWriter(DireccionFichero.getSelectedText())) {
+						try(FileWriter writer = new FileWriter(DireccionFichero.getText()+"\\usuarios.txt")) {
 							for(Usuario u :  usuarios) {
 								writer.nullWriter();
 								String Usuario = u.getNombre() + "," + u.getCorreo() + "," + u.getContraseña();
 								writer.write(Usuario);
 								writer.write("\n");
 							}
+							writer.close();
 						}catch (IOException e3) {
 							System.out.println("Error");
 						}
@@ -154,6 +155,7 @@ public class VentanaVisualizacionUsuarios extends JFrame {
 		contentPane.add(DireccionFichero);
 		DireccionFichero.setColumns(10);
 		
+		
 		JButton btnNewButton = new JButton("Ordenar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -172,6 +174,15 @@ public class VentanaVisualizacionUsuarios extends JFrame {
 		});
 		btnNewButton.setBounds(649, 55, 89, 23);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(DireccionFichero.getText());
+			}
+		});
+		btnNewButton_1.setBounds(270, 426, 89, 23);
+		contentPane.add(btnNewButton_1);
 		
 	}
 }

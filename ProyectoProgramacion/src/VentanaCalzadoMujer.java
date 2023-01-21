@@ -45,6 +45,13 @@ public class VentanaCalzadoMujer extends JFrame {
 		
 		
 		JButton btnCestaCompra = new JButton("Cesta ");
+		btnCestaCompra.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaCestaCompra ventana = new VentanaCestaCompra();
+				ventana.setVisible(true);
+				dispose();
+			}
+		});
 		btnCestaCompra.setBounds(690, 11, 103, 47);
 		contentPane.add(btnCestaCompra);
 		
