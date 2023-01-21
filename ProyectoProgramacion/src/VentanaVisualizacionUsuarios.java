@@ -175,14 +175,5 @@ public class VentanaVisualizacionUsuarios extends JFrame {
 		btnNewButton.setBounds(649, 55, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(DireccionFichero.getText());
-			}
-		});
-		btnNewButton_1.setBounds(270, 426, 89, 23);
-		contentPane.add(btnNewButton_1);
-		
 	}
 }

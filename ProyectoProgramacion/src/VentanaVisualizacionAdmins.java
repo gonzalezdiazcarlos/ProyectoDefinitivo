@@ -138,7 +138,7 @@ public class VentanaVisualizacionAdmins extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList <Administrador> admins = metodos.getAdmins();
 				if(admins!=null) {
-						try(FileWriter writer = new FileWriter(DireccionFichero.getSelectedText())) {
+						try(FileWriter writer = new FileWriter(DireccionFichero.getText()+"\\admins.txt")) {
 							for(Administrador a :  admins) {
 								writer.nullWriter();
 								String Usuario = a.getCodigo() + "," + a.getNombre() + "," + a.getContraseña();
