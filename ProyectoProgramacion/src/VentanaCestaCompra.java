@@ -8,12 +8,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import Utilidades.Newsletter;
+import Utilidades.UtilExceptions;
 import basesdedatos.MetodosUsuario_sql;
 import clases.Pedidos;
 import clases.Usuario;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.JScrollPane;
+import javax.mail.MessagingException;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -140,6 +143,12 @@ public class VentanaCestaCompra extends JFrame {
 				int suma = 0;
 				for(int i = 0; i<table.getRowCount();i++) {
 					suma = suma + Integer.parseInt(table.getValueAt(i, 4).toString());
+				}
+				try {	Newsletter.biggestOrderSendMail(MetodosUsuario_sql.biggestOrder());
+				}catch (MessagingException  e1) {
+					e1.printStackTrace();
+				} catch (UtilExceptions e1) {
+					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Pedido realizado, el importe total es de: "+suma);
 			}
